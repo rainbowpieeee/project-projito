@@ -1,0 +1,102 @@
+.container {
+  border-top: 1px solid var(--bg-orange-light);
+  border-bottom: 1px solid var(--bg-orange-light);
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  padding-left: 12px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    height: 70px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    height: 104px;
+    padding: 24px;
+  }
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font: 16px/1.18 var(--font-family-pt-sans);
+}
+
+@media screen and (max-width: 1023px) { /* планшетная версия до ширины экрана в 1023px*/
+  .links {
+    width: 612px;
+    gap: 60px;
+    justify-content: space-between;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .links {
+    width: calc(100% - 30px);
+    gap: 20px 32px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.item:not(:last-of-type) {
+  margin-right: 60px;
+}
+
+.link {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: var(--black-100);
+}
+
+.link:hover {
+  border-bottom: 1px solid var(--black-100);
+  margin-bottom: -1px;
+}
+
+@media screen and (max-width: 1023px) {
+  .link {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .item:not(:last-of-type) {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .link {
+    font-family: var(--font-family-pt-sans);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}

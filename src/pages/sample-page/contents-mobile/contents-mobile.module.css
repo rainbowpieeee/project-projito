@@ -1,0 +1,40 @@
+.contents {
+  font-family: var(--font-family-wf-pt-sans);
+  width: 100vw;
+  height: 48px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 14px;
+  z-index: 12;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-white);
+  outline: 1px solid var(--bg-orange-light);
+  padding: 12px 16px 14px;
+}
+
+.heading {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.arrow__button {
+  margin-right: auto;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.menu__button {
+  margin-left: auto;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}

@@ -1,0 +1,15 @@
+.footer {
+  font: 20px/1.26 var(--font-family-pt-sans);
+  max-width: 1376px;
+  width: calc(100vw * 1375 / 1440);
+  margin: 0 auto 32px;
+  box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 0 12px 20px;
+    width: 100%;
+  }
+}

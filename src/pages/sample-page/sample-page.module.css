@@ -1,0 +1,108 @@
+.main {
+  position: relative;
+  max-width: 1440px;
+  padding: 0 20px;
+}
+
+.pagesNav {
+  font: 14px var(--font-family-pt-sans);
+  color: var(--black-100);
+  padding: 20px 0 0 32px;
+  margin: 0;
+  text-align: start;
+}
+
+@media screen and (max-width: 767px) {
+  .pagesNav {
+    padding: 20px 0 0 10px;
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+.pagesNavLink {
+  font-family: var(--font-family-pt-sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--black-100);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pagesNavLink:hover {
+  border-bottom: var(--black-100) solid 1px;
+}
+
+.tag {
+  font: 0.7em/1.29em var(--font-family-pt-sans);
+  margin: 0 auto 0;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+}
+
+.tagPart {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  max-width: 329px;
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--button-default);
+  text-align: center;
+}
+
+.button:disabled {
+  cursor: unset;
+}
+
+.buttonContent {
+  font: normal 26px var(--font-family-wf);
+  color: var(--black-100);
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 435px;
+  left: -25px;
+  background-color: transparent;
+  border: none;
+  transform: rotate(-90deg);
+  cursor: pointer;
+  border-bottom: 1px solid white;
+  display: block;
+}
+
+.buttonContent:hover {
+  border-bottom: 1px solid var(--black-100);
+}
+
+@media screen and (max-width: 1023px) {
+  .button {
+    max-width: 237px;
+    height: 48px;
+  }
+  .tag {
+    margin: 24px 0 0;
+  }
+  .buttonContent {
+    font-size: 18px;
+    left: -5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .buttonContent {
+    display: none;
+  }
+}

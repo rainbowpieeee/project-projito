@@ -1,0 +1,46 @@
+.nav {
+  max-width: 1396px;
+  width: calc(100vw * 1375 / 1440);
+  margin: 0 auto;
+  box-sizing: border-box;
+  font: 1em/1.3em "PT Sans", sans-serif;
+  color: #323232;
+  text-align: start;
+  display: block;
+}
+
+.text {
+  font: 1em/1.3em "PT Sans", sans-serif;
+  text-decoration: none;
+  color: #323232;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.text:hover {
+  border-bottom: #323232 solid 1px;
+}
+
+.textlast:hover  {
+  border-bottom: none;
+}
+
+.title {
+  margin: 20px 0 40px;
+  padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .title {
+    margin: 20px 0 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav {
+    display: none;
+  }
+  .text {
+    padding-bottom: 2px;
+  }
+}

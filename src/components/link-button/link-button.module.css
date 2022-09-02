@@ -1,0 +1,146 @@
+.linkButton {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  align-items: center;
+  background: var(--button-default);
+  transition: all 0.2s linear;
+  border: none;
+  cursor: pointer;
+}
+
+.linkButton:hover {
+  background: var(--button-hover);
+}
+
+.linkButton_size_small {
+  width: 24px;
+  height: 24px;
+}
+
+.linkButton_size_medium {
+  width: 36px;
+  height: 36px;
+}
+.linkButton_size_large {
+  width: 50px;
+  height: 50px;
+}
+
+.linkButton_type_rect {
+  border-radius: 8px;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--black-100);
+  font-family: var(--font-family-pt-sans);
+  font-style: normal;
+  font-weight: 400;
+  width: 329px;
+  min-height: 50px;
+  font-size: 20px;
+  line-height: 26px;
+  border: 1px solid var(--button-default);
+}
+
+.linkButton_type_rect:hover {
+  background: var(--button-hover);
+  border: 1px solid var(--button-hover);
+}
+
+.linkButton_type_rect:active {
+  background: var(--button-pressed);
+  border: 1px solid var(--button-pressed);
+}
+
+.linkButton_type_round {
+  border-radius: 50%;
+}
+
+.linkButton__arrow {
+  display: block;
+}
+
+.linkButton__arrow_hide {
+  display: none;
+}
+
+.linkButton_colorText_white {
+  color: var(--bg-white);
+  border: 1px solid var(--bg-white);
+}
+
+.linkButton_disabled {
+  pointer-events: none;
+}
+
+.linkButton_type_rect.linkButton_disabled {
+  color: var(--color-text-gray);
+  background: var(--button-disabled);
+  border: none;
+}
+
+.linkButton_type_round.linkButton_disabled {
+  opacity: 0.5;
+}
+
+.linkButton.linkButton_type_round.linkButton_border {
+  border: 1px solid var(--black-100);
+}
+
+@media screen and (max-width: 1000px) {
+  .linkButton_type_rect {
+    width: 237px;
+    height: 48px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .linkButton_type_rect:hover {
+    background: var(--button-default);
+    border: 1px solid var(--button-default);
+  }
+  .linkButton_type_rect:active {
+    background: var(--button-pressed);
+    border: 1px solid var(--button-pressed);
+  }
+  .linkButton_size_large {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .linkButton_type_rect {
+    width: 330px;
+    min-height: 50px;
+  }
+  .linkButton__arrow {
+    width: 11px;
+  }
+}
+.linkButton_size_large {
+  height: 50px;
+  width: 50px;
+}
+.linkButton_size_large .linkButton__arrow {
+  width: 22px;
+}
+
+.linkButton_color_transparent {
+  background: transparent;
+}
+
+.linkButton_color_transparent.linkButton_disabled {
+  background: transparent;
+}
+
+.linkButton_type_rect.linkButton_color_transparent.linkButton_disabled {
+  border: 1px solid var(--button-disabled);
+}
+
+.linkButton_color_transparent:hover {
+  background: transparent;
+}
+.linkButton_color_transparent:active {
+  background: transparent;
+}

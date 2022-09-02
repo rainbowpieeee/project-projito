@@ -1,0 +1,83 @@
+.materials {
+  width: 100%;
+  max-width: 1440px;
+  min-width: 310px;
+  margin: 0 auto;
+  padding: 56px 148px 75px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1400px) {
+  .materials {
+    padding: 56px 70px 75px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .materials {
+    padding: 32px 0;
+    width: calc(100vw - 34px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .materials {
+    overflow: hidden;
+    width: 100%;
+    padding-left: 0;
+    margin: 0;
+    padding-bottom: 28px;
+  }
+}
+
+.title {
+  margin: 0 0 40px;
+  padding: 0;
+  font: normal 46px var(--font-family-wf-pt-sans);
+  color: var(--black-100);
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .title {
+    margin-bottom: 0;
+    font-size: 30px;
+    line-height: 1.23;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 1s ease-in;
+}
+
+@media screen and (max-width: 1023px){
+  .cards{
+    column-gap: 12px;
+    margin: 0 auto;
+    width: fit-content;
+  }
+}
+
+.pagination{
+  margin-top: 18px;
+  width: fit-content;
+}
+
+.materials .swiper{
+  margin-left: 41px;
+}
+
+.materials .swiperSlide {
+  width: 276px;
+}
