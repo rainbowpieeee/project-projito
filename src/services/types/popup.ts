@@ -1,5 +1,5 @@
 export interface IPopup {
   title   : string;
-  caption : string;
+  subtitle : string;
   sample?  : string;
 }
