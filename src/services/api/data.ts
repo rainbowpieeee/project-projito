@@ -21,6 +21,11 @@ export const dataAPI = createApi({
         url: '/frontpage',
       }),
     }),
+    getLayoutData: build.query<any, void>({
+      query: () => ({
+        url: '/context',
+      }),
+    }),
     getBanner: build.query<IBanner, void>({
       query: () => ({
         url: '/banner',

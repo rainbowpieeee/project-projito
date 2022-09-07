@@ -4,11 +4,23 @@ import React, { FunctionComponent, useState } from "react";
 import HeaderDropdown from "../headerDropdown/headerDropdown";
 
 interface IHeaderNavProps {
+  menuLinks:any
+  // menuLinks: Array<{
+  //   title:string;
+  //   page_slug:string | null;
+  //   url: string | null;
+  //   children: null | Array<{
+  //       title:string;
+  //       page_slug:string | null;
+  //       url: string | null;
+  //       children: null;
+  //   }>;
+  // }>;
   desktop: boolean;
   open: boolean;
   closeMenu: ()=>void;
 }
-const HeaderNav: FunctionComponent<IHeaderNavProps> = ({ desktop, open, closeMenu }) => {
+const HeaderNav: FunctionComponent<IHeaderNavProps> = ({ desktop, open, closeMenu, menuLinks }:IHeaderNavProps) => {
   const [dropDownVisible, setDropDownVisible] = useState(false);
 
   const isMobileMenuStyle = open
@@ -32,6 +44,9 @@ const HeaderNav: FunctionComponent<IHeaderNavProps> = ({ desktop, open, closeMen
       }
     >
       <ul className={style}>
+
+
+
         <li className={headerNavStyles.menu__item}>
           <a href="https://prozhito.org/page/archive"
             className={headerNavStyles.menu__link}
@@ -59,6 +74,10 @@ const HeaderNav: FunctionComponent<IHeaderNavProps> = ({ desktop, open, closeMen
           </Link>
         </li>
         <HeaderDropdown visible={dropDownVisible} desktop={desktop} setDropDownVisible={setDropDownVisible } closeMenu={closeMenu} />
+
+
+
+
       </ul>
     </nav>
   );
