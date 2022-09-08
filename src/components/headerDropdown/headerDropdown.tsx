@@ -8,26 +8,34 @@ interface IHeaderDropdownProps {
   desktop: boolean;
   setDropDownVisible: (visible: boolean) => void;
   closeMenu: () => void;
+  childrenLinks?: any;
 }
 const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
   visible,
   desktop,
   setDropDownVisible,
   closeMenu,
+  childrenLinks,
 }) => {
   const dropdownStylesMobile = `${headerDropdownStyles.menu__mobileLinksSection}`;
-
+  console.log(childrenLinks);
+  
   const dropdownStylesDesktop = visible
     ? `${headerDropdownStyles.menu__dropdown} ${headerDropdownStyles.menu__dropdown_visible} `
     : `${headerDropdownStyles.menu__dropdown} `;
 
-  return desktop ? (
+
+
+
+  return !childrenLinks ? null : 
+  desktop ? (
     <ul
       className={dropdownStylesDesktop}
       onMouseEnter={() => setDropDownVisible(true)}
       onMouseLeave={() => setDropDownVisible(false)}
     >
-      <li className={headerDropdownStyles.menu__dropdownItem}>
+     
+      {/* <li className={headerDropdownStyles.menu__dropdownItem}>
         <Link
           to="/"
           onClick={closeMenu}
@@ -71,7 +79,7 @@ const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
         >
           Спецпроекты
         </Link>
-      </li>
+      </li> */}
     </ul>
   ) : (
     <div className={dropdownStylesMobile}>

@@ -15,10 +15,9 @@ export const Layout: FC<LayoutProps> = ({ children } : LayoutProps) => {
 
   const headerdata = {
     logos:data.data?.logos,
-    mainMenu: data.data?.mainMenu
+    mainMenu: data.data?.main_menu
   }
-  
-  
+
   
 
 

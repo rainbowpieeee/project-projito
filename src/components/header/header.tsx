@@ -8,6 +8,7 @@ import openImg from "../../images/menu-mobil-open.svg";
 import closeImg from "../../images/menu-mobil-close.svg";
 import HeaderNav from "../headerNav/headerNav";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import {BASE_URL} from "../../constants/index"
 
 
 interface IHeaderData {
@@ -17,14 +18,14 @@ interface IHeaderData {
     page_slug:string | null;
     url:string | null;
   }>,
-  mainMenu: Array <{}>
+  mainMenu: Array <any>
 }
 
 const Header: FunctionComponent<IHeaderData> = ({logos, mainMenu}:IHeaderData) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const desktop = useMediaQuery("(min-width: 768px)");
   const location = useLocation();
-
+ 
   const btnState = menuOpen
     ? { img: closeImg, alt: "закрыть" }
     : { img: openImg, alt: "открыть" };
@@ -47,8 +48,9 @@ const Header: FunctionComponent<IHeaderData> = ({logos, mainMenu}:IHeaderData) =
         <div className={headerStyles.header__links}>
           <Link to="/" className={headerStyles.link}>
             <img
-              src={logos[0].icon}
+              src={`${BASE_URL}${logos[0].icon}`}
               alt={logos[0].alt_text}
+              className = {headerStyles.mainLogo}
             />
           </Link>
           <a
@@ -58,8 +60,9 @@ const Header: FunctionComponent<IHeaderData> = ({logos, mainMenu}:IHeaderData) =
             className={headerStyles.link}
           >
             <img
-              src={logos[1].icon}
+              src={`${BASE_URL}${logos[1].icon}`}
               alt={logos[1].alt_text}
+              className = {headerStyles.euLogo}
             />
           </a>
         </div>
