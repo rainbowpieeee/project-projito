@@ -3,13 +3,21 @@ import FooterInfo from '../footer-info/footer-info';
 import { FooterLinks } from '../footer-links/footer-links';
 import footerStyles from './footer.module.css';
 
-export const Footer: FC = () => {
+
+interface IFooterProps {
+  logos:any;
+  footerMenu:any;
+  footerLinks: any;
+  footerSocial: any;
+}
+
+export const Footer: FC<IFooterProps> = ({footerMenu, logos, footerLinks, footerSocial  }) => {
 
   return (
       <footer className={footerStyles.footer}>
-        <FooterLinks />
+        <FooterLinks footerMenu = {footerMenu} />
 
-        <FooterInfo />
+        <FooterInfo logos={logos} footerLinks={footerLinks} footerSocial={footerSocial} />
       </footer>
   )
 }

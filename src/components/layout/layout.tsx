@@ -3,6 +3,7 @@ import Breadcrumbs from "../breadcrumbs/breadcrumbs"
 import Footer from "../footer/footer"
 import Header from "../header/header"
 import { dataAPI } from "../../services/api/data"
+import { logRoles } from "@testing-library/react"
 
 export interface LayoutProps  {
   children: ReactNode
@@ -10,12 +11,19 @@ export interface LayoutProps  {
 
 export const Layout: FC<LayoutProps> = ({ children } : LayoutProps) => {
 
-  const data: any = dataAPI.useGetLayoutDataQuery();
+  const {data} = dataAPI.useGetLayoutDataQuery();
 
 
   const headerdata = {
-    logos:data.data?.logos,
-    mainMenu: data.data?.main_menu
+    logos:data?.logos,
+    mainMenu: data?.main_menu
+  }
+
+  const footerdata = {
+    logos:data?.logos,
+    footerMenu:data?.footer_menu,
+    footerLinks: data?.footer_links,
+    footerSocial: data?.footer_social
   }
 
   
@@ -28,7 +36,7 @@ export const Layout: FC<LayoutProps> = ({ children } : LayoutProps) => {
 
       <Breadcrumbs />
         {children}
-      <Footer />
+      <Footer {...footerdata} />
     </>
   )
 }
