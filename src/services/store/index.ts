@@ -10,7 +10,6 @@ export const rootReducer = combineReducers({
   [dataAPI.reducerPath]: dataAPI.reducer,
 })
 
-const logger = createLogger()
 
 export const index = configureStore({
   reducer: rootReducer
@@ -19,7 +18,6 @@ export const index = configureStore({
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([
-    logger,
     dataAPI.middleware
   ]),
   devTools: process.env.NODE_ENV === 'development',

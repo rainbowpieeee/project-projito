@@ -82,3 +82,11 @@
   opacity: .3;
   transition: opacity .3s linear 0s;
 }
+
+.euLogo {
+  max-width: 100px;
+}
+
+.mainLogo {
+  max-width: 176px;
+}

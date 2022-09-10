@@ -227,3 +227,12 @@
     text-align: center;
   }
 }
+
+
+.mainLogo {
+  max-width:176px
+}
+
+.euLogo {
+  max-width: 100px;
+}

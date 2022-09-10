@@ -5,4 +5,5 @@ export type TAppDispatch = typeof store.dispatch
 
 export interface IListItem {
   readonly id : number;
+  key?: string | number;
 }
