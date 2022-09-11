@@ -18,7 +18,7 @@ export const Popup: FC<IPopupProps> = ({data, closePopup}) => {
       onClick={() => navigate(`/sample/blockade`)}
     >
       <h2 className={popupStyles.popup__title}>{data.title}</h2>
-      <p className={popupStyles.popup__subtitle}>{data.caption}</p>
+      <p className={popupStyles.popup__subtitle}>{data.subtitle}</p>
     </article>
 
     </Link>

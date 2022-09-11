@@ -16,9 +16,14 @@ export const dataAPI = createApi({
     prepareHeaders: (headers) => getDefaultHeaders(headers),
   }),
   endpoints: (build) => ({
-    getPopup: build.query<IPopup, void>({
+    getFrontpageData: build.query<any, void>({
       query: () => ({
-        url: '/popup',
+        url: '/frontpage',
+      }),
+    }),
+    getLayoutData: build.query<any, void>({
+      query: () => ({
+        url: '/context',
       }),
     }),
     getBanner: build.query<IBanner, void>({
