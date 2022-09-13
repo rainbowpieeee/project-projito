@@ -4,21 +4,28 @@ import { LinkButton } from "../link-button/link-button";
 
 export interface IntroItemProps {
   title: string;
-  text: string;
-  action: string;
-  link: string;
+  annotation: string;
+  label?:string;
+  cover?: string;
+  links: [
+    {
+      label?:string;
+      page_slug?:string;
+      url?:string;
+    }
+  ];
 }
 
 export const IntroItem: FC<IntroItemProps> = (introData: IntroItemProps) => {
-  const { title, text, action, link } = introData;
+  const { title, annotation, label, links } = introData;
 
   return (
     <li className={introItemStyles.intro__card}>
       <h3 className={introItemStyles.intro__cardTitle}>{title}</h3>
-      <p className={introItemStyles.intro__cardSubtitle}>{text}</p>
+      <p className={introItemStyles.intro__cardSubtitle}>{annotation}</p>
       <div className={introItemStyles.intro__linkContainer}>
-        <p className={introItemStyles.intro__aboutLink}>{action}</p>
-        <LinkButton to={link} round size="large" />
+        <p className={introItemStyles.intro__aboutLink}>{label}</p>
+        <LinkButton to={links[0].url} round size="large" />
       </div>
     </li>
   );

@@ -8,12 +8,24 @@ import openImg from "../../images/menu-mobil-open.svg";
 import closeImg from "../../images/menu-mobil-close.svg";
 import HeaderNav from "../headerNav/headerNav";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import {BASE_URL} from "../../constants/index"
 
-const Header: FunctionComponent = () => {
+
+interface IHeaderData {
+  logos:Array<{
+    alt_text:string;
+    icon:string;
+    page_slug:string | null;
+    url:string | null;
+  }>,
+  mainMenu: Array <any>
+}
+
+const Header: FunctionComponent<IHeaderData> = ({logos, mainMenu}:IHeaderData) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const desktop = useMediaQuery("(min-width: 768px)");
   const location = useLocation();
-
+ 
   const btnState = menuOpen
     ? { img: closeImg, alt: "закрыть" }
     : { img: openImg, alt: "открыть" };
@@ -36,8 +48,9 @@ const Header: FunctionComponent = () => {
         <div className={headerStyles.header__links}>
           <Link to="/" className={headerStyles.link}>
             <img
-              src={desktop? logo : logo_mobile}
-              alt={desktop.toString()}
+              src={`${BASE_URL}${logos[0].icon}`}
+              alt={logos[0].alt_text}
+              className = {headerStyles.mainLogo}
             />
           </Link>
           <a
@@ -47,12 +60,13 @@ const Header: FunctionComponent = () => {
             className={headerStyles.link}
           >
             <img
-              src={logo_eu_ru}
-              alt="Европейский университет в Санкт-Петербурге"
+              src={`${BASE_URL}${logos[1].icon}`}
+              alt={logos[1].alt_text}
+              className = {headerStyles.euLogo}
             />
           </a>
         </div>
-        <HeaderNav desktop={desktop} open={menuOpen} closeMenu={()=>setMenuOpen(false)} />
+        <HeaderNav menuLinks={mainMenu} desktop={desktop} open={menuOpen} closeMenu={()=>setMenuOpen(false)} />
         {
           !desktop && (
             <button
