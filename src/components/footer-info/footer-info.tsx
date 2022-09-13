@@ -42,8 +42,8 @@ export const FooterInfo: FC<IFooterInfo> = ({
       </div>
       <section className={footerInfoStyles.social}>
         <ul className={footerInfoStyles.links}>
-          {footerSocial.map((link:any) => (
-            <li className={footerInfoStyles.item}>
+          {footerSocial.map((link:any, i:number) => (
+            <li className={footerInfoStyles.item} key={i}>
               <a
                 href={link.url}
                 target="_blank"
@@ -65,7 +65,7 @@ export const FooterInfo: FC<IFooterInfo> = ({
       <section className={footerInfoStyles.legal}>
         <ul className={footerInfoStyles.legals}>
 
-        {footerLinks.map((link:any) => <li className={footerInfoStyles.item}>
+        {footerLinks.map((link:any, i :number ) => <li className={footerInfoStyles.item} key = {i+88}>
             <a className={footerInfoStyles.link}
             href={link.url}
             >

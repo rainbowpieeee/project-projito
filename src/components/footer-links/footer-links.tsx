@@ -9,8 +9,8 @@ export const FooterLinks: FC<IFooterLinks> = ({ footerMenu }) => {
   return ( footerMenu ? 
     <section className={footerLinksStyles.container}>
       <ul className={footerLinksStyles.links}>
-        {footerMenu.map((link:any) => (
-          <li className={footerLinksStyles.item}>
+        {footerMenu.map((link:any, i:number ) => (
+          <li className={footerLinksStyles.item} key = {i}>
             <a href={link.url} className={footerLinksStyles.link}>{link.title}</a>
           </li>
         ))}
