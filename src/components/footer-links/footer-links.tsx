@@ -1,29 +1,23 @@
-import { FC } from 'react';
-import footerLinksStyles from './footer-links.module.css';
+import { FC } from "react";
+import footerLinksStyles from "./footer-links.module.css";
 
-export const FooterLinks: FC = () => {
+interface IFooterLinks {
+  footerMenu: any;
+}
 
-  return (
+export const FooterLinks: FC<IFooterLinks> = ({ footerMenu }) => {
+  return ( footerMenu ? 
     <section className={footerLinksStyles.container}>
       <ul className={footerLinksStyles.links}>
-        <li className={footerLinksStyles.item}>
-          <button className={footerLinksStyles.link}>О команде</button>
-        </li>
-        <li className={footerLinksStyles.item}>
-          <button className={footerLinksStyles.link}>Благодарности</button>
-        </li>
-        <li className={footerLinksStyles.item}>
-          <button className={footerLinksStyles.link}>Партнёры</button>
-        </li>
-        <li className={footerLinksStyles.item}>
-          <button className={footerLinksStyles.link}>FAQ</button>
-        </li>
-        <li className={footerLinksStyles.item}>
-          <button className={footerLinksStyles.link}>Инструкции</button>
-        </li>
+        {footerMenu.map((link:any) => (
+          <li className={footerLinksStyles.item}>
+            <a href={link.url} className={footerLinksStyles.link}>{link.title}</a>
+          </li>
+        ))}
       </ul>
     </section>
+    :null
   )
-}
+};
 
 export default FooterLinks;

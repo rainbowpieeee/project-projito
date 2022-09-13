@@ -11,10 +11,17 @@ import NewsItem from "../../components/news-item/news-item";
 import { JournalItem } from "../../components/journal-item/journal-item";
 import { isExperience } from "../../utils/functions";
 import Loader from "../../components/loader/loader";
+import { lookup } from "dns";
 
 const MainPage: FC = () => {
-  const { isLoading: isPopupLoading, data: popupData } =
-    dataAPI.useGetPopupQuery();
+  const data: any =
+    dataAPI.useGetFrontpageDataQuery();
+
+  const popupData = data.data?.anchored[0]
+  const introData = data.data?.blocks.find((block:any)=> block.layout === "actions").cards
+  
+ 
+
   const { isLoading: isNewsLoading, data: newsData } =
     dataAPI.useGetMainNewsQuery();
   const { isLoading: isDiaryLoading, data: diaryData } =
@@ -44,8 +51,7 @@ const MainPage: FC = () => {
     isNewsLoading ||
     isBannerLoading ||
     isDiaryLoading ||
-    isJournalLoading ||
-    isPopupLoading
+    isJournalLoading 
   ) {
     return <Loader />;
   }
@@ -60,10 +66,10 @@ const MainPage: FC = () => {
 
   return (
     <main>
-      {!isPopupLoading && popupData && popupOpen && (
+      { popupData && popupOpen && (
         <Popup data={popupData} closePopup={() => setPopupOpen(false)} />
       )}
-      <Intro />
+      <Intro introData={introData} />
       {!isNewsLoading && newsForSlider && (
         <section>
           <CardsSlider
