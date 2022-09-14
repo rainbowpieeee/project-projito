@@ -13,26 +13,26 @@ import "swiper/css/scrollbar";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 interface IMaterialsProps {
-  data: IDiaryItem[];
+  title: string;
+  cards:any;
 }
 
-export const Materials: FC<IMaterialsProps> = ({ data }) => {
+export const Materials: FC<IMaterialsProps> = ({ title, cards }) => {
   const desktop = useMediaQuery("(min-width: 768px)")
   return (
     <section className={materialsStyle.materials}>
-      <h2 className={materialsStyle.title}>Материалы</h2>
+      <h2 className={materialsStyle.title}>{title}</h2>
       {desktop ? (
         <ul className={materialsStyle.cards}>
           {
-            data.map(item => (
+            cards.map((item:any, index:number) => (
               <MaterialsItem
-                id={item.id}
-                name={item.name}
-                image={item.image}
-                text={item.text}
-                tag={item.tag}
-                key={item.id}
-                sample={item.sample}
+                name={item.title}
+                image={item.cover}
+                text={item.annotation}
+                tag={item.label}
+                key={index}
+                sample={item.links[0].page_slug}
               />
             ))
           }
@@ -50,16 +50,15 @@ export const Materials: FC<IMaterialsProps> = ({ data }) => {
             className={materialsStyle.swiper}
           >
             {
-              data.map(item => (
+              cards.map((item:any, index:number) => (
                 <SwiperSlide className={materialsStyle.swiperSlide} key={item.id}>
                   <MaterialsItem
-                    id={item.id}
-                    name={item.name}
-                    image={item.image}
-                    text={item.text}
-                    tag={item.tag}
-                    key={item.id}
-                    sample={item.sample}
+                name={item.title}
+                image={item.cover}
+                text={item.annotation}
+                tag={item.label}
+                key={index}
+                sample={item.links[0].page_slug}
                   />
                 </SwiperSlide>
               ))

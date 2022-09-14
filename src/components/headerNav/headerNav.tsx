@@ -56,13 +56,12 @@ const HeaderNav: FunctionComponent<IHeaderNavProps> = ({
       <div>
         <nav className={`${desktop ? "" : isMobileContainerStyle} header__nav`}>
           <ul className={style}>
-            {menuLinks.map((link: any, index:Number) => (
-              <li className={headerNavStyles.menu__item}>
+            {menuLinks.map((link: any, i:number) => (
+              <li className={headerNavStyles.menu__item} key={i}>
                 <HeaderNavItem
                   linkData={link}
                   onMouseEnter = {handleMouseEnter}
                   onMouseLeave = {handleMouseLeave}
-                  key={index}
                 ></HeaderNavItem>
               </li>
             ))}

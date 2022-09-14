@@ -19,6 +19,10 @@ const MainPage: FC = () => {
 
   const popupData = data.data?.anchored[0]
   const introData = data.data?.blocks.find((block:any)=> block.layout === "actions").cards
+  const materialsData = data.data?.blocks.find((block:any) => block.layout === "cards")
+  const bannerData = data.data?.blocks.find((block:any)=> block.layout === "card").cards
+  const specialData = data.data?.blocks.find((block:any)=> block.layout === "special" ).category
+  
   
  
 
@@ -26,14 +30,12 @@ const MainPage: FC = () => {
     dataAPI.useGetMainNewsQuery();
   const { isLoading: isDiaryLoading, data: diaryData } =
     dataAPI.useGetDiariesQuery();
-  const { isLoading: isBannerLoading, data: bannerData } =
-    dataAPI.useGetBannerQuery();
   const { isLoading: isJournalLoading, data: journalData } =
     dataAPI.useGetMainJournalQuery();
 
   const [popupOpen, setPopupOpen] = useState(true);
   const newsForSlider = newsData
-    ? newsData.map((news) => {
+    ? newsData.map((news:any) => {
         return (
           <NewsItem
             date={news.date}
@@ -49,7 +51,6 @@ const MainPage: FC = () => {
 
   if (
     isNewsLoading ||
-    isBannerLoading ||
     isDiaryLoading ||
     isJournalLoading 
   ) {
@@ -81,10 +82,11 @@ const MainPage: FC = () => {
           />
         </section>
       )}
-      {!isDiaryLoading && diaryData && <Materials data={diaryData} />}
-      {!isBannerLoading && bannerData && (
+      {materialsData && <Materials {...materialsData} />}
+
+      { bannerData && (
         <section className={pageStyles.page__section}>
-          <Banner data={bannerData} />
+          <Banner {...bannerData[0]} />
         </section>
       )}
 
@@ -101,7 +103,7 @@ const MainPage: FC = () => {
         </section>
       )}
 
-      <Project />
+      <Project {...specialData} />
     </main>
   );
 };
