@@ -16,7 +16,7 @@ const App: FC = () => {
           <Route path={"/"} element={<MainPage />} />
           <Route path={"/news"} element={<NewsPage />} />
           <Route path={"/journal"} element={<JournalPage />} />
-          <Route path={`/sample/:page`} element={<SamplePage />} />
+          <Route path="/page/:name"element={<SamplePage />} />
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </Layout>

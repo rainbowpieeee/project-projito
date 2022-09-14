@@ -147,19 +147,19 @@ const SamplePage: FC = () => {
       audio.removeEventListener('ended', onEnded)
     }
   })
-
+ 
   const mobile = useMediaQuery('(max-width: 767px)')
-  const {page} = useParams<{page?: string}>()
-  const {isLoading, data} = dataAPI.useGetSampleContentQuery(page)
-  if (isLoading || !data || data.length === 0) {
-    return null
-  }
+  const {name} = useParams<{name?: string}>()
+  
+  const {data}: any = dataAPI.useGetPageDataQuery(name)
+    if ( !data ) {
+      return null
+    }
 
   const openContents = (): void => {
     setContentsOpen(true)
   }
 
-  if (isLoading) return <Loader />
 
   return (
     <main className={samplePageStyles.main}>
@@ -193,7 +193,7 @@ const SamplePage: FC = () => {
           <ContentsMobile />
         )
       }
-      <article className="article" dangerouslySetInnerHTML={{__html: data[0].content}}/>
+      <article className="article" dangerouslySetInnerHTML={{__html: data.content}}/> 
     </main>
   )
 }
