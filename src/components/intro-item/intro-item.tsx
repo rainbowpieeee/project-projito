@@ -28,7 +28,7 @@ export const IntroItem: FC<IntroItemProps> = (introData: IntroItemProps) => {
 
 
 
-        {<LinkButton to={links[0].url || links[0].page_slug} round size="large" />}
+        {<LinkButton to={links[0].url || links[0].page_slug} round size="large" type={links[0].url? "button" : "link"} />}
 
 
 

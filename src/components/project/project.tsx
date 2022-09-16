@@ -30,7 +30,7 @@ export const Project: FC<IProject> = ({title, items, archive_link_label}) => {
               {
                 items.slice(0,2).map((item,i) => (
                   <li key={i}>
-                    <ProjectCard item={item} onClick={() => handleNavigate(`/sample/${item.slug}`)}/>
+                    <ProjectCard item={item} onClick={() => handleNavigate(`/page/${item.slug}`)}/>
                   </li>
                 ))
               }

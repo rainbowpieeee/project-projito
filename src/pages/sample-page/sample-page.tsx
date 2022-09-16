@@ -177,9 +177,9 @@ const SamplePage: FC = () => {
       <div className={samplePageStyles.tag}>
         {data.tags.map((tag: string, i: number) => (
           <>
-            <p className={samplePageStyles.tagPart}>{tag}</p>
+            <p className={samplePageStyles.tagPart} key = {i}>{tag}</p>
             {i < data.tags.length-1 ? (
-              <p className={samplePageStyles.tagPart}>&#183;</p>
+              <p className={samplePageStyles.tagPart} key = {i+5}>&#183;</p>
             ) : null}
           </>
         ))}

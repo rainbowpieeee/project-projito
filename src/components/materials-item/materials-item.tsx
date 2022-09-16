@@ -2,6 +2,8 @@ import { FC } from "react";
 import { IDiaryItem } from "../../services/types/diary";
 import materialsItemStyle from "./materials-item.module.css";
 import { BASE_URL } from "../../constants";
+import { LinkButton } from "../link-button/link-button";
+import { Link } from "react-router-dom";
 
 
 export const MaterialsItem: FC<any> = (diaryData: any) => {
@@ -14,7 +16,7 @@ export const MaterialsItem: FC<any> = (diaryData: any) => {
 
    return(
     <li className={materialsItemStyle.card}>
-      <a href={`${BASE_URL}${sample}`} className={materialsItemStyle.card__link}>
+      <Link to={`page/${sample}`} className={materialsItemStyle.card__link}>
         <p className={materialsItemStyle.card__tag}>{tag}</p>
         <p className={titleClassName}>
           {name}
@@ -27,7 +29,7 @@ export const MaterialsItem: FC<any> = (diaryData: any) => {
         <p className={materialsItemStyle.card__text}>
           {text}
         </p>
-      </a>
+      </Link>
     </li>
    )
  }
