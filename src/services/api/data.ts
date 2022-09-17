@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 import {getDefaultHeaders} from "./index";
 import {INewsItem, TNewsRequest} from "../types/news";
-import {BASE_API_URL, JOURNAL_MAIN_LIMIT, NEWS_MAIN_LIMIT, PROJECTS_LIMIT, X_TOTAL_COUNT} from "../../constants";
+import {BASE_API_URL, BASE_URL, JOURNAL_MAIN_LIMIT, NEWS_MAIN_LIMIT, PROJECTS_LIMIT, X_TOTAL_COUNT} from "../../constants";
 import {IPopup} from "../types/popup";
 import {ISamplePageContent} from "../types/sample";
 import {IDiaryItem} from "../types/diary";

@@ -1,8 +1,8 @@
 import { TJournalFilterDictionary } from "../services/types/journal";
 
 
-export const BASE_URL = "https://dev.archive.prozhito.org/"
-export const BASE_API_URL = "https://dev.archive.prozhito.org/api/landing/";
+export const BASE_URL = "://localhost:30http01/api"
+export const BASE_API_URL = "://localhost:30http01/api";
 export const NEWS_PAGE_LIMIT_DESKTOP = 9;
 export const NEWS_PAGE_LIMIT_TABLET = 6;
 export const NEWS_PAGE_LIMIT_MOBILE = 3;

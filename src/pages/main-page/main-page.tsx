@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { dataAPI } from "../../services/api/data";
 import pageStyles from "../css/page.module.css";
 import { Intro } from "../../components/intro/intro";
@@ -12,6 +12,8 @@ import { JournalItem } from "../../components/journal-item/journal-item";
 import { isExperience } from "../../utils/functions";
 import Loader from "../../components/loader/loader";
 import { lookup } from "dns";
+import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
 
 const MainPage: FC = () => {
   const data: any =
@@ -19,8 +21,8 @@ const MainPage: FC = () => {
 
   const popupData = data.data?.anchored[0]
   const introData = data.data?.blocks.find((block:any)=> block.layout === "actions").cards
-  
- 
+
+
 
   const { isLoading: isNewsLoading, data: newsData } =
     dataAPI.useGetMainNewsQuery();
@@ -31,17 +33,42 @@ const MainPage: FC = () => {
   const { isLoading: isJournalLoading, data: journalData } =
     dataAPI.useGetMainJournalQuery();
 
+  const { isLoading: isFrontpageLoading, data: frontpageData } =
+    dataAPI.useGetFrontpageDataQuery();
+
+  console.log(frontpageData)
+
+  const dispatch = useDispatch()
+
+
+
+  const allData = frontpageData ? frontpageData.blocks : []
+  const [news] = allData?.filter((obj: { layout: string; }) => obj.layout === 'news')
+
+  const newsLoad = news?.category.items
+  console.log(newsLoad)
   const [popupOpen, setPopupOpen] = useState(true);
+  type TObj ={
+    annotation: string;
+cover: string;
+date_published: string;
+layout: string;
+slug: string;
+subtitle: string;
+tags: string[] | string
+title: string;
+  }
   const newsForSlider = newsData
-    ? newsData.map((news) => {
+    ? newsData.map((obj) => {
+      console.log(obj)
         return (
           <NewsItem
-            date={news.date}
-            tag={news.tag}
-            text={news.text}
-            image={news.image}
-            imageMobile={news.imageMobile}
-            key={news.id}
+            date={obj.date}
+            tag={obj.tag}
+            text={obj.text}
+            image={obj.image}
+            imageMobile={obj.image}
+            key={obj.id}
           />
         );
       })
@@ -51,7 +78,7 @@ const MainPage: FC = () => {
     isNewsLoading ||
     isBannerLoading ||
     isDiaryLoading ||
-    isJournalLoading 
+    isJournalLoading
   ) {
     return <Loader />;
   }
