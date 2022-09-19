@@ -15,14 +15,13 @@ const NewsItem: FC<TNewsItemProps> = ({
   text,
 }) => {
   const displayMobile = useMediaQuery(MOBYLE_MEDIA_QUERY);
-
   return (
     <article className={styles.newsItem}>
       <div className={styles.newsItem__titleContainer}>
         {
           date && (
             <time dateTime={date} className={styles.newsItem__date}>
-              {formatDate(date, "short")}
+              {date}
             </time>
           )
         }
@@ -31,7 +30,7 @@ const NewsItem: FC<TNewsItemProps> = ({
       <img
         width={212}
         height={223}
-        src={require(`../../images/${displayMobile ? imageMobile : image}`)}
+        src={image}
         alt={tag ?? "Картинка к новости"}
         className={styles.newsItem__image}
       />

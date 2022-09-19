@@ -13,7 +13,8 @@ import { isExperience } from "../../utils/functions";
 import Loader from "../../components/loader/loader";
 import { lookup } from "dns";
 import { nanoid } from "nanoid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import store from "../../services/store";
 
 const MainPage: FC = () => {
   const data: any =
@@ -41,6 +42,10 @@ const MainPage: FC = () => {
   const dispatch = useDispatch()
 
 
+  const newsDatas = useSelector(
+    (store) => (store as any).news.data
+  );
+  console.log(newsDatas)
 
   const allData = frontpageData ? frontpageData.blocks : []
   const [news] = allData?.filter((obj: { layout: string; }) => obj.layout === 'news')
@@ -58,16 +63,16 @@ subtitle: string;
 tags: string[] | string
 title: string;
   }
-  const newsForSlider = newsData
-    ? newsData.map((obj) => {
+  const newsForSlider = newsDatas
+    ? newsDatas.map((obj: { date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => {
       console.log(obj)
         return (
           <NewsItem
-            date={obj.date}
-            tag={obj.tag}
-            text={obj.text}
-            image={obj.image}
-            imageMobile={obj.image}
+            date={obj.date_published}
+            tag={obj.tags}
+            text={obj.annotation}
+            image={`https://dev.archive.prozhito.org/${obj.cover}`}
+            imageMobile={obj.cover}
             key={obj.id}
           />
         );

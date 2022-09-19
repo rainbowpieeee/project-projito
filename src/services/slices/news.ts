@@ -22,12 +22,15 @@ export const newsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(dataAPI.endpoints.getNews.matchFulfilled, (state, action) => {
+      .addMatcher(dataAPI.endpoints.getFrontpageData.matchFulfilled, (state, action) => {
+        const allData = action.payload.blocks
+        const [newsCategory] = allData?.filter((obj: { layout: string; }) => obj.layout === 'news')
+        const news = newsCategory.category.items
         if (state.page === 1) {
-          console.log(state.data)
-          state.data = action.payload.data
+          console.log(action.payload)
+          state.data = news
         } else {
-          const reduced = state.data.filter(stateItem => !action.payload.data.find(payloadItem => stateItem.id === payloadItem.id))
+          const reduced = state.data.filter(stateItem => !news.find((payloadItem: { id: number; }) => stateItem.id === payloadItem.id))
           state.data = reduced.concat(action.payload.data);
         }
         state.total = action.payload.total
