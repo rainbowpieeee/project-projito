@@ -35,7 +35,7 @@ export const newsSlice = createSlice({
         }
         state.total = action.payload.total
       })
-      .addMatcher(dataAPI.endpoints.getNews.matchRejected, (state, action) => {
+      .addMatcher(dataAPI.endpoints.getFrontpageData.matchRejected, (state, action) => {
         if (action.error.name !== "ConditionError") {
           state.data = []
           state.total = 0
