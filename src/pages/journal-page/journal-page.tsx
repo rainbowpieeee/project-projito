@@ -23,7 +23,6 @@ import {
   JOURNAL_PAGE_LIMIT_TABLET,
   JOURNAL_PAGE_LIMIT_MOBILE,
 } from "../../constants";
-import { isExperience } from "../../utils/functions";
 import Loader from "../../components/loader/loader";
 
 const JournalPage: FC = () => {
