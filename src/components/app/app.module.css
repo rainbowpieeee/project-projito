@@ -2,7 +2,7 @@
   text-align: center;
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: min-content 80px auto min-content;
   grid-template-columns: 100%;
   justify-content: center;
 }

@@ -24,6 +24,11 @@ const NewsPage: FC = () => {
   const data = useSelector(dataNewsSelector);
   const total = useSelector(totalNewsSelector);
 
+  const newsDatas = useSelector(
+    (store) => (store as any).news.data
+  );
+  console.log(data)
+
   const tablet = useMediaQuery("(max-width: 1023px)");
   const mobile = useMediaQuery("(max-width: 767px)");
   let pageLimit = NEWS_PAGE_LIMIT_DESKTOP;
@@ -48,21 +53,23 @@ const NewsPage: FC = () => {
   return (
     <div className={newsPageStyle.main}>
       <h1 className={newsPageStyle.title}>Новости и события</h1>
-      {!isLoading && data && (
+      {!isLoading && newsDatas && (
         <>
           <ul className={newsPageStyle.container}>
-            {data.map((item) => (
-              <li key={item.id}>
+            {newsDatas.map((obj: { date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => (
+              <li key={obj.id}>
                 <NewsItem
-                  text={item.text}
-                  date={item.date}
-                  image={item.image}
-                  imageMobile={item.imageMobile}
+                  date={obj.date_published}
+                  tag={obj.tags}
+                  text={obj.annotation}
+                  image={`https://dev.archive.prozhito.org/${obj.cover}`}
+                  imageMobile={obj.cover}
+                  key={obj.id}
                 />
               </li>
             ))}
           </ul>
-          {total > data.length && (
+          {total > newsDatas.length && (
             <div className={newsPageStyle.button}>
               <LinkButton type={"button"} onClick={handleLoad}>
                 Загрузить еще
