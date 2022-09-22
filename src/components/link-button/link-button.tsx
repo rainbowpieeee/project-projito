@@ -9,7 +9,7 @@ import arrowImgDisabled from "../../images/arrow_right_disabled.svg";
 import arrowImgDisabledWhite from "../../images/arrow_right_disabled_white.svg";
 
 export const LinkButton: FC<{
-  to?: To;
+  to?: To | string;
   type?: "link" | "button";
   round?: boolean;
   color?: boolean;
@@ -18,7 +18,7 @@ export const LinkButton: FC<{
   disabled?: boolean;
   direction?: "left" | "right";
   border?: boolean;
-  children?: string | null;
+  children?: string | null ;
   size?: "small" | "medium" | "large" | null;
   onClick?: (() => void) | ((e: SyntheticEvent) => void);
 }> = ({
@@ -88,7 +88,7 @@ export const LinkButton: FC<{
   );
 
   const buttonElement = (
-    <button className={className} disabled={disabled} onClick={onClick}>
+    <button className={className} onClick={() => window.open(`${to}`, "_blank")}>
       {children}
       {arrowImage}
     </button>

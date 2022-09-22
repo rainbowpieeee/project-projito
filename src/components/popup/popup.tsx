@@ -13,9 +13,9 @@ export const Popup: FC<IPopupProps> = ({data, closePopup}) => {
   return (
     <div className={popupStyles.popup}>
       <button type="button" onClick={()=> closePopup()} className={popupStyles.popup__closeButton} />
-    <Link to='/sample/blockade' className={popupStyles.popup__link}>
+    <Link to={`/page/${data.page_slug}`} className={popupStyles.popup__link}>
     <article
-      onClick={() => navigate(`/sample/blockade`)}
+      onClick={() => navigate(`/page/${data.page_slug}`)}
     >
       <h2 className={popupStyles.popup__title}>{data.title}</h2>
       <p className={popupStyles.popup__subtitle}>{data.subtitle}</p>

@@ -31,12 +31,9 @@ export const dataAPI = createApi({
         url: '/banner',
       }),
     }),
-    getSampleContent: build.query<ReadonlyArray<ISamplePageContent>, string | undefined>({
+    getPageData: build.query<ReadonlyArray<any>, string | undefined>({
       query: (name) => ({
-        url: '/sample',
-        params: {
-          name: name
-        },
+        url: `/page/${name}`,
       }),
     }),
     getNews: build.query<{data: Array<INewsItem>, total: number}, TNewsRequest>({

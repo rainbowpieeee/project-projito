@@ -13,7 +13,7 @@
 * ReactJs
 * Redux Toolkit + RTK Query
 * React Router Dom v6
-* Будут добавляться еще
+* Будут добавляться ещё
 
 **Авторы**
 * **Лев Пензин**

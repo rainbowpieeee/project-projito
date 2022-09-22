@@ -22,6 +22,10 @@ const MainPage: FC = () => {
 
   const popupData = data.data?.anchored[0]
   const introData = data.data?.blocks.find((block:any)=> block.layout === "actions").cards
+  const materialsData = data.data?.blocks.find((block:any) => block.layout === "cards")
+  const bannerData = data.data?.blocks.find((block:any)=> block.layout === "card").cards
+  const specialData = data.data?.blocks.find((block:any)=> block.layout === "special" ).category
+
 
 
 
@@ -29,8 +33,6 @@ const MainPage: FC = () => {
     dataAPI.useGetMainNewsQuery();
   const { isLoading: isDiaryLoading, data: diaryData } =
     dataAPI.useGetDiariesQuery();
-  const { isLoading: isBannerLoading, data: bannerData } =
-    dataAPI.useGetBannerQuery();
   const { isLoading: isJournalLoading, data: journalData } =
     dataAPI.useGetMainJournalQuery();
 
@@ -81,7 +83,6 @@ title: string;
 
   if (
     isNewsLoading ||
-    isBannerLoading ||
     isDiaryLoading ||
     isJournalLoading
   ) {
@@ -113,10 +114,11 @@ title: string;
           />
         </section>
       )}
-      {!isDiaryLoading && diaryData && <Materials data={diaryData} />}
-      {!isBannerLoading && bannerData && (
+      {materialsData && <Materials {...materialsData} />}
+
+      { bannerData && (
         <section className={pageStyles.page__section}>
-          <Banner data={bannerData} />
+          <Banner {...bannerData[0]} />
         </section>
       )}
 
@@ -133,7 +135,7 @@ title: string;
         </section>
       )}
 
-      <Project />
+      <Project {...specialData} />
     </main>
   );
 };

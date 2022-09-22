@@ -25,7 +25,13 @@ export const IntroItem: FC<IntroItemProps> = (introData: IntroItemProps) => {
       <p className={introItemStyles.intro__cardSubtitle}>{annotation}</p>
       <div className={introItemStyles.intro__linkContainer}>
         <p className={introItemStyles.intro__aboutLink}>{label}</p>
-        <LinkButton to={links[0].url} round size="large" />
+
+
+
+        {<LinkButton to={links[0].url || links[0].page_slug} round size="large" type={links[0].url? "button" : "link"} />}
+
+
+
       </div>
     </li>
   );
