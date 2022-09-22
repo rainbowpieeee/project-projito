@@ -2,6 +2,7 @@ import { FC } from "react";
 import { IProjectItem } from "../../services/types/project";
 import { formatDate } from "../../utils/dateHelper";
 import projectCardStyle from "./project-card.module.css";
+import {BASE_URL} from "../../constants/index"
 
 interface IProjectCardProps {
   readonly item: IProjectItem;
@@ -12,13 +13,13 @@ export const ProjectCard: FC<IProjectCardProps> = ({item, onClick}) => {
 
   return (
     <div className={projectCardStyle.card} onClick={() => onClick(item.id)}>
-      <img className={projectCardStyle.image} src={require(`../../images/${item.image}`)} alt={'Картинка проекта'}/>
+      <img className={projectCardStyle.image} src={`${BASE_URL}${item.cover}`} alt={'Картинка проекта'}/>
       <div className={projectCardStyle.text}>
         <div className={projectCardStyle.field}>
           <h3 className={projectCardStyle.title}>{item.title}</h3>
-          <p className={projectCardStyle.description}>{item.text}</p>
+          <p className={projectCardStyle.description}>{item.annotation}</p>
         </div>
-        <p className={projectCardStyle.date}>{formatDate(item.date, "long")}</p>
+        <p className={projectCardStyle.date}>{formatDate(item.date_published, "long")}</p>
       </div>
     </div>
 

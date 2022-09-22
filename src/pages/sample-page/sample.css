@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-.article h1 {
+h1 {
   font: 46px var(--font-family-wf);
   line-height: 55px;
   max-width: 678px;

@@ -22,15 +22,22 @@ const MainPage: FC = () => {
 
   const popupData = data.data?.anchored[0]
   const introData = data.data?.blocks.find((block:any)=> block.layout === "actions").cards
+<<<<<<< HEAD
 
 
+=======
+  const materialsData = data.data?.blocks.find((block:any) => block.layout === "cards")
+  const bannerData = data.data?.blocks.find((block:any)=> block.layout === "card").cards
+  const specialData = data.data?.blocks.find((block:any)=> block.layout === "special" ).category
+  
+  
+ 
+>>>>>>> dev
 
   const { isLoading: isNewsLoading, data: newsData } =
     dataAPI.useGetMainNewsQuery();
   const { isLoading: isDiaryLoading, data: diaryData } =
     dataAPI.useGetDiariesQuery();
-  const { isLoading: isBannerLoading, data: bannerData } =
-    dataAPI.useGetBannerQuery();
   const { isLoading: isJournalLoading, data: journalData } =
     dataAPI.useGetMainJournalQuery();
 
@@ -53,6 +60,7 @@ const MainPage: FC = () => {
   const newsLoad = news?.category.items
   console.log(newsLoad)
   const [popupOpen, setPopupOpen] = useState(true);
+<<<<<<< HEAD
   type TObj ={
     annotation: string;
 cover: string;
@@ -66,6 +74,10 @@ title: string;
   const newsForSlider = newsDatas
     ? newsDatas.map((obj: { date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => {
       console.log(obj)
+=======
+  const newsForSlider = newsData
+    ? newsData.map((news:any) => {
+>>>>>>> dev
         return (
           <NewsItem
             date={obj.date_published}
@@ -81,7 +93,6 @@ title: string;
 
   if (
     isNewsLoading ||
-    isBannerLoading ||
     isDiaryLoading ||
     isJournalLoading
   ) {
@@ -113,10 +124,11 @@ title: string;
           />
         </section>
       )}
-      {!isDiaryLoading && diaryData && <Materials data={diaryData} />}
-      {!isBannerLoading && bannerData && (
+      {materialsData && <Materials {...materialsData} />}
+
+      { bannerData && (
         <section className={pageStyles.page__section}>
-          <Banner data={bannerData} />
+          <Banner {...bannerData[0]} />
         </section>
       )}
 
@@ -133,7 +145,7 @@ title: string;
         </section>
       )}
 
-      <Project />
+      <Project {...specialData} />
     </main>
   );
 };
