@@ -90,11 +90,7 @@ const JournalPage: FC = () => {
         <ul className={journalPageStyles.list}>
           {journal.map((item) => (
             <li className={journalPageStyles.list__item}>
-              <JournalItem
-                key={item.id}
-                item={item}
-                isExp={isExperience(item)}
-              />
+              <JournalItem key={item.id} item={item} />
             </li>
           ))}
         </ul>
