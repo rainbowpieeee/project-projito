@@ -3,6 +3,7 @@ import { IListItem } from "./index";
 export interface INewsItem extends IListItem {
   date: string;
   tag?: string | null;
+  slug: string;
   image: string;
   imageMobile: string;
   text: string;

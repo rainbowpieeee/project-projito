@@ -26,9 +26,6 @@ const MainPage: FC = () => {
   const bannerData = data.data?.blocks.find((block:any)=> block.layout === "card").cards
   const specialData = data.data?.blocks.find((block:any)=> block.layout === "special" ).category
 
-
-
-
   const { isLoading: isNewsLoading, data: newsData } =
     dataAPI.useGetMainNewsQuery();
   const { isLoading: isDiaryLoading, data: diaryData } =
@@ -66,11 +63,12 @@ tags: string[] | string
 title: string;
   }
   const newsForSlider = newsDatas
-    ? newsDatas.map((obj: { date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => {
+    ? newsDatas.map((obj: { slug: string; date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => {
       console.log(obj)
         return (
           <NewsItem
             date={obj.date_published}
+            slug={obj.slug}
             tag={obj.tags}
             text={obj.annotation}
             image={`https://dev.archive.prozhito.org/${obj.cover}`}
