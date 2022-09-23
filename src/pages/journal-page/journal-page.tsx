@@ -23,7 +23,6 @@ import {
   JOURNAL_PAGE_LIMIT_TABLET,
   JOURNAL_PAGE_LIMIT_MOBILE,
 } from "../../constants";
-import { isExperience } from "../../utils/functions";
 import Loader from "../../components/loader/loader";
 
 const JournalPage: FC = () => {
@@ -91,11 +90,7 @@ const JournalPage: FC = () => {
         <ul className={journalPageStyles.list}>
           {journal.map((item) => (
             <li className={journalPageStyles.list__item}>
-              <JournalItem
-                key={item.id}
-                item={item}
-                isExp={isExperience(item)}
-              />
+              <JournalItem key={item.id} item={item} />
             </li>
           ))}
         </ul>
