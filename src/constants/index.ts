@@ -16,9 +16,10 @@ export const X_TOTAL_COUNT = "X-Total-Count";
 
 export const JOURNAL_ITEM_TYPE: TJournalFilterDictionary = {
   all: "ВСЕ",
-  topic: "ТЕМАТИЧЕСКАЯ ПОДБОРКА",
-  project: "СПЕЦПРОЕКТЫ",
-  experience: "ОПЫТ ЧИТАТЕЛЯ",
+  topic: "Тематическая подборка",
+  project: "Ерунда",
+  experience: "опыт читателя",
+  kids: "Детство",
 };
 
 export const MOBYLE_MEDIA_QUERY = "(max-width:767px)";

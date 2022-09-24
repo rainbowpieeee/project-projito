@@ -14,6 +14,7 @@ import { lookup } from "dns";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../../services/store";
+import { IJournalItem } from "../../services/types/journal";
 
 const MainPage: FC = () => {
   const data: any = dataAPI.useGetFrontpageDataQuery();

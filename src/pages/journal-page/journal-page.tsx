@@ -32,7 +32,10 @@ const JournalPage: FC = () => {
   const total = useSelector(totalJournalSelector);
   const journal = useSelector(dataJournalSelector);
   const [selectedTab, setSelectedTab] = useState<TJournalFilter>(filter);
-
+  const data: any = dataAPI.useGetFrontpageDataQuery();
+  const journalData = data.data?.blocks.find(
+    (block: any) => block.layout === "journal"
+  ).category;
   const tablet = useMediaQuery("(max-width: 1024px)");
   const mobile = useMediaQuery("(max-width: 425px)");
 
@@ -62,7 +65,8 @@ const JournalPage: FC = () => {
   return (
     <main className={journalPageStyles.main}>
       <h1 className={journalPageStyles.heading}>
-        Журнал &laquo;Прожито&raquo;
+        {/* Журнал &laquo;Прожито&raquo; */}
+        {journalData.title}
       </h1>
       <Tabs>
         <TabItem
@@ -84,6 +88,11 @@ const JournalPage: FC = () => {
           value={"experience"}
           selected={selectedTab === "experience"}
           setSelected={() => handleFilter("experience")}
+        />
+        <TabItem
+          value={"kids"}
+          selected={selectedTab === "kids"}
+          setSelected={() => handleFilter("kids")}
         />
       </Tabs>
       {!isJournalLoading && journal && (

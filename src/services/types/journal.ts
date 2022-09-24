@@ -1,6 +1,6 @@
 import { IListItem } from "./index";
 
-export type TJournalType = "topic" | "project" | "experience";
+export type TJournalType = "topic" | "project" | "experience" | "kids";
 
 export interface IJournalAbstractItem extends IListItem {
   type: TJournalType;
@@ -25,7 +25,7 @@ export type IJournalItem = {
   layout: string;
   slug: string;
   subtitle: string;
-  tags: any;
+  tags: Array<string>;
   title: string;
   id?: number;
 };

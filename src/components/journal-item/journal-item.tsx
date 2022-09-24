@@ -7,10 +7,9 @@ interface IJournalItemProps {
   item: IJournalItem;
 }
 export const JournalItem: FC<IJournalItemProps> = ({ item }) => {
-  const itemTypeName =
-    item.tags != "Тематическая подборка"
-      ? "Спецпроект"
-      : "Тематическая подборка";
+  const itemTypeName = item.tags.map((tag) => tag != "Тематическая подборка")
+    ? "Спецпроект"
+    : "Тематическая подборка";
 
   return item.layout === "round" ? (
     <article className={`${journalItemStyles.cardExp}`} key={item.id}>

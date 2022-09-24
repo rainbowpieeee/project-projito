@@ -17,6 +17,7 @@ export const journalSlice = createSlice({
   reducers: {
     setJournalPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
+      console.log(action.payload);
     },
     setJournalFilter: (state, action: PayloadAction<TJournalFilter>) => {
       state.page = 1;
@@ -38,13 +39,12 @@ export const journalSlice = createSlice({
             const reduced = state.data.filter(
               (stateItem) =>
                 !journalBlock.category.items.find(
-                  (payloadItem: { id: number }) =>
-                    stateItem.id === payloadItem.id
+                  (payloadItem: { id: any }) => stateItem.id === payloadItem.id
                 )
             );
             state.data = reduced.concat(action.payload.data);
           }
-          state.total = action.payload.total;
+          state.total = action.payload.blocks.length;
         }
       )
       .addMatcher(
