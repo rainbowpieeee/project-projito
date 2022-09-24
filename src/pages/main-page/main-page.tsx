@@ -10,7 +10,7 @@ import CardsSlider from "../../components/cards-slider/cards-slider";
 import NewsItem from "../../components/news-item/news-item";
 import { JournalItem } from "../../components/journal-item/journal-item";
 import Loader from "../../components/loader/loader";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { IJournalItem } from "../../services/types/journal";
 
 const MainPage: FC = () => {
