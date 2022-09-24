@@ -2,14 +2,10 @@ import { FC } from 'react';
 import FooterInfo from '../footer-info/footer-info';
 import { FooterLinks } from '../footer-links/footer-links';
 import footerStyles from './footer.module.css';
+import {IFooterProps} from "../../services/types/layout"
 
 
-interface IFooterProps {
-  logos:any;
-  footerMenu:any;
-  footerLinks: any;
-  footerSocial: any;
-}
+
 
 export const Footer: FC<IFooterProps> = ({footerMenu, logos, footerLinks, footerSocial  }) => {
 

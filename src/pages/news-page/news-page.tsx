@@ -17,6 +17,7 @@ import { LinkButton } from "../../components/link-button/link-button";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import NewsItem from "../../components/news-item/news-item";
 import Loader from "../../components/loader/loader";
+import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs"
 
 const NewsPage: FC = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,6 @@ const NewsPage: FC = () => {
   const newsDatas = useSelector(
     (store) => (store as any).news.data
   );
-  console.log(data)
 
   const tablet = useMediaQuery("(max-width: 1023px)");
   const mobile = useMediaQuery("(max-width: 767px)");
@@ -52,6 +52,7 @@ const NewsPage: FC = () => {
 
   return (
     <div className={newsPageStyle.main}>
+      <Breadcrumbs/>
       <h1 className={newsPageStyle.title}>Новости и события</h1>
       {!isLoading && newsDatas && (
         <>

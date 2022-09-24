@@ -1,14 +1,21 @@
 import { Link} from "react-router-dom";
-import {useState} from 'react'
+import {EventHandler, FC, MouseEventHandler, useState} from 'react'
 import headerNavItemStyles from "./header-nav-item.module.css";
-import { set } from "immer/dist/internal";
+import { IMenuLink } from "../../services/types/layout";
 
-export const HeaderNavItem = ({linkData, onMouseEnter, onMouseLeave}:any) => {
+type THeaderNavItem = {
+  linkData:IMenuLink;
+  onMouseEnter: (children:[{title: string;
+    page_slug: string;
+    url: string;
+    children?: [string];}] | undefined)=>void;
+  onMouseLeave: ()=>void;
+}
+
+export const HeaderNavItem:FC<THeaderNavItem> = ({linkData, onMouseEnter, onMouseLeave}) => {
   const slug = linkData.page_slug;
   const url = linkData.url;
   const [itemData, ] = useState(linkData)
-
-
  
 
   return slug ? (
@@ -31,37 +38,3 @@ export const HeaderNavItem = ({linkData, onMouseEnter, onMouseLeave}:any) => {
   );
 };
 
-// link.page_slug ? (
-//   <Link
-//     to={link.page_slug}
-//     className={headerNavStyles.menu__link}
-//   >
-//     {" "}
-//     {link.title}
-//   </Link>
-// ) : (
-//   <a
-//     href={link.url}
-//     className={headerNavStyles.menu__link}
-//     target="_blank"
-//   >
-//     {link.title}
-//   </a>
-// );
-// })}
-// <HeaderDropdown
-// visible={dropDownVisible}
-// desktop={desktop}
-// setDropDownVisible={setDropDownVisible}
-// closeMenu={closeMenu}
-// />
-
-// <li
-// className={headerNavStyles.menu__item}
-// onMouseEnter={() => setDropDownVisible(true)}
-// onMouseLeave={() => setDropDownVisible(false)}
-// >
-// <Link to="/" className={headerNavStyles.menu__link} onClick={closeMenu}>
-//   О&nbsp;проекте
-// </Link>
-// </li>

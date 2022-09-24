@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { IDiaryItem } from "../../services/types/diary";
 import materialsStyle from "./materials.module.css";
 import { MaterialsItem } from "../materials-item/materials-item";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IMaterialsProps } from "../../services/types/materials";
 
 // Import Swiper styles
 import "swiper/css";
@@ -12,10 +12,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-interface IMaterialsProps {
-  title: string;
-  cards:any;
-}
+
 
 export const Materials: FC<IMaterialsProps> = ({ title, cards }) => {
   const desktop = useMediaQuery("(min-width: 768px)")
@@ -25,7 +22,7 @@ export const Materials: FC<IMaterialsProps> = ({ title, cards }) => {
       {desktop ? (
         <ul className={materialsStyle.cards}>
           {
-            cards.map((item:any, index:number) => (
+            cards.map((item, index:number) => (
               <MaterialsItem
                 name={item.title}
                 image={item.cover}
@@ -45,13 +42,11 @@ export const Materials: FC<IMaterialsProps> = ({ title, cards }) => {
             spaceBetween={12}
             slidesPerView={"auto"}
             pagination={{ el: ".pagination", clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
             className={materialsStyle.swiper}
           >
             {
-              cards.map((item:any, index:number) => (
-                <SwiperSlide className={materialsStyle.swiperSlide} key={item.id}>
+              cards.map((item, index:number) => (
+                <SwiperSlide className={materialsStyle.swiperSlide} key={index+100}>
                   <MaterialsItem
                 name={item.title}
                 image={item.cover}
