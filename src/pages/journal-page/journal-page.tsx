@@ -24,6 +24,8 @@ import {
   JOURNAL_PAGE_LIMIT_MOBILE,
 } from "../../constants";
 import Loader from "../../components/loader/loader";
+import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs"
+
 
 const JournalPage: FC = () => {
   const dispatch = useDispatch();
@@ -64,6 +66,7 @@ const JournalPage: FC = () => {
 
   return (
     <main className={journalPageStyles.main}>
+      <Breadcrumbs/>
       <h1 className={journalPageStyles.heading}>
         {/* Журнал &laquo;Прожито&raquo; */}
         {journalData.title}

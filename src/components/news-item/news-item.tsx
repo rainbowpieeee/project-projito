@@ -4,11 +4,13 @@ import { formatDate } from "../../utils/dateHelper";
 import { INewsItem } from "../../services/types/news";
 import { MOBYLE_MEDIA_QUERY } from "../../constants";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { Link } from "react-router-dom";
 
 export type TNewsItemProps = Omit<INewsItem, "id">;
 
 const NewsItem: FC<TNewsItemProps> = ({
   date,
+  slug,
   tag,
   image,
   imageMobile,
@@ -17,6 +19,7 @@ const NewsItem: FC<TNewsItemProps> = ({
   const displayMobile = useMediaQuery(MOBYLE_MEDIA_QUERY);
   return (
     <article className={styles.newsItem}>
+      <Link className={styles.link} to={`/page/${slug}`}>
       <div className={styles.newsItem__titleContainer}>
         {
           date && (
@@ -35,6 +38,8 @@ const NewsItem: FC<TNewsItemProps> = ({
         className={styles.newsItem__image}
       />
       <p className={styles.newsItem__text}>{text}</p>
+      </Link>
+
     </article>
   );
 };

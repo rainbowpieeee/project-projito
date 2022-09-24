@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { IDiaryItem } from "../../services/types/diary";
 import materialsItemStyle from "./materials-item.module.css";
-import { BASE_URL } from "../../constants";
-import { LinkButton } from "../link-button/link-button";
+import { API_URL_FOR_IMAGE } from "../../constants";
 import { Link } from "react-router-dom";
+import { IMaterialsItem } from "../../services/types/materials";
 
 
-export const MaterialsItem: FC<any> = (diaryData: any) => {
+export const MaterialsItem: FC<IMaterialsItem> = (diaryData) => {
   const { name, image, text, tag, sample } = diaryData;
 
   const titleClassName = name.split(' ').length<3
@@ -22,7 +22,7 @@ export const MaterialsItem: FC<any> = (diaryData: any) => {
           {name}
         </p>
         <img
-          src={`${BASE_URL}${image}`}
+          src={`${API_URL_FOR_IMAGE}${image}`}
           alt={`фотография ${name}`}
           className={materialsItemStyle.card__image}
         />
@@ -34,57 +34,3 @@ export const MaterialsItem: FC<any> = (diaryData: any) => {
    )
  }
 
-
- /*
-export interface IDiaryItem extends IListItem{
-  name  : string;
-  image : string;
-  text  : string;
-  tag?  : string;
-}
-
-  "diaries" : [
-    {
-      "id"      : 1,
-      "name"    : "Артамонов Виктор",
-      "image"   : "artamonov.jpg",
-      "text"    : "Петербургский краевед и педагог. Нам необходимо набрать 20 рукописных тетрадей",
-      "tag"     : "Нужен наборщик"
-    },
-    {
-      "id"      : 2,
-      "name"    : "Анонимный блокадный дневник",
-      "image"   : "anonym.jpg",
-      "text"    : "Музей Ахматовой передал нам для работы рукопись анонимного преподавателя ФЗУ, ставшего свидетелем блокады Ленинграда",
-      "tag"     : "Нужна сверка"
-    },
-    {
-      "id"      : 3,
-      "name"    : "Родоман Борис",
-      "image"   : "rodoman.jpg",
-      "text"    : "Документы из домашнего архива географа: переписка, дневники и материалы для его научных статей",
-      "tag"     : "Новые материалы"
-    }
-  ],
-
-  <li className="card item-slider">
-      <a href="typical.html" className="card__link">
-        <p className="card__tag">НУЖЕН НАБОРЩИК</p>
-        <p className="card__title card__title_top">
-          Артамонов
-        </p>
-        <p className="card__title">
-          Виктор
-        </p>
-        <img
-          src="./images/artamonov.jpg"
-          alt="фотография Артамонова Виктора"
-          className="card__image"
-        />
-        <p className="card__text">
-          Петербургский краевед и педагог. Нам необходимо набрать 20
-          рукописных тетрадей
-        </p>
-      </a>
-    </li>
-*/

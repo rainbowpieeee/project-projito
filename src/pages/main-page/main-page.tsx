@@ -10,50 +10,30 @@ import CardsSlider from "../../components/cards-slider/cards-slider";
 import NewsItem from "../../components/news-item/news-item";
 import { JournalItem } from "../../components/journal-item/journal-item";
 import Loader from "../../components/loader/loader";
-import { lookup } from "dns";
-import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../../services/store";
 import { IJournalItem } from "../../services/types/journal";
 
 const MainPage: FC = () => {
-  const data: any = dataAPI.useGetFrontpageDataQuery();
+  const { data, isLoading }: any = dataAPI.useGetFrontpageDataQuery();
 
-  const popupData = data.data?.anchored[0];
-  const introData = data.data?.blocks.find(
+  const popupData = data?.anchored[0];
+  const introData = data?.blocks.find(
     (block: any) => block.layout === "actions"
   ).cards;
-  const materialsData = data.data?.blocks.find(
+  const materialsData = data?.blocks.find(
     (block: any) => block.layout === "cards"
   );
-  const bannerData = data.data?.blocks.find(
+  const bannerData = data?.blocks.find(
     (block: any) => block.layout === "card"
   ).cards;
-  const specialData = data.data?.blocks.find(
+  const specialData = data?.blocks.find(
     (block: any) => block.layout === "special"
   ).category;
-  const journalData = data.data?.blocks.find(
+  const journalData = data?.blocks.find(
     (block: any) => block.layout === "journal"
   ).category;
-  const { isLoading: isNewsLoading, data: newsData } =
-    dataAPI.useGetMainNewsQuery();
-  const { isLoading: isDiaryLoading, data: diaryData } =
-    dataAPI.useGetDiariesQuery();
-  const { isLoading: isJournalLoading } = dataAPI.useGetMainJournalQuery();
-
-  const { isLoading: isFrontpageLoading, data: frontpageData } =
-    dataAPI.useGetFrontpageDataQuery();
-
-  const dispatch = useDispatch();
 
   const newsDatas = useSelector((store) => (store as any).news.data);
-
-  const allData = frontpageData ? frontpageData.blocks : [];
-  const [news] = allData?.filter(
-    (obj: { layout: string }) => obj.layout === "news"
-  );
-
-  const newsLoad = news?.category.items;
 
   const [popupOpen, setPopupOpen] = useState(true);
   type TObj = {
@@ -68,44 +48,46 @@ const MainPage: FC = () => {
   };
   const newsForSlider = newsDatas
     ? newsDatas.map(
-        (obj: {
-          date_published: string;
-          tags: string | null | undefined;
-          annotation: string;
-          cover: string;
-          id: string | number | undefined;
-        }) => {
+        (
+          obj: {
+            slug: string;
+            date_published: string;
+            tags: string | null | undefined;
+            annotation: string;
+            cover: string;
+            id: string | number | undefined;
+          },
+          i: number
+        ) => {
           return (
             <NewsItem
               date={obj.date_published}
+              slug={obj.slug}
               tag={obj.tags}
               text={obj.annotation}
               image={`https://dev.archive.prozhito.org/${obj.cover}`}
               imageMobile={obj.cover}
-              key={obj.id}
+              key={i}
             />
           );
         }
       )
     : [];
 
-  if (isNewsLoading || isDiaryLoading || isJournalLoading) {
-    return <Loader />;
-  }
-
   const journalForSlider = journalData
-    ? journalData.items.map((item: any) => {
+    ? journalData.items.map((item: IJournalItem) => {
         return <JournalItem item={item} key={item.id} />;
       })
     : [];
 
+  if (isLoading) return <Loader />;
   return (
     <main>
       {popupData && popupOpen && (
         <Popup data={popupData} closePopup={() => setPopupOpen(false)} />
       )}
       <Intro introData={introData} />
-      {!isNewsLoading && newsForSlider && (
+      {newsForSlider && (
         <section>
           <CardsSlider
             title="Новости и события"
@@ -124,7 +106,7 @@ const MainPage: FC = () => {
         </section>
       )}
 
-      {!isJournalLoading && journalData && (
+      {journalData && (
         <section className={pageStyles.page__overflow}>
           <CardsSlider
             title={journalData.title}

@@ -2,13 +2,14 @@ import headerDropdownStyles from "./headerDropdown.module.css";
 import headerNavStyles from "../headerNav/headerNav.module.css";
 import { Link } from "react-router-dom";
 import React, { FunctionComponent } from "react";
+import {IMenuLink} from "../../services/types/layout"
 
 interface IHeaderDropdownProps {
   visible: boolean;
   desktop: boolean;
   setDropDownVisible: (visible: boolean) => void;
   closeMenu: () => void;
-  dropDownData?: any;
+  dropDownData?: Array<IMenuLink>;
 }
 const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
   visible,
@@ -18,7 +19,6 @@ const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
   dropDownData,
 }) => {
   const dropdownStylesMobile = `${headerDropdownStyles.menu__mobileLinksSection}`;
-console.log(dropDownData);
 
   const dropdownStylesDesktop = visible
     ? `${headerDropdownStyles.menu__dropdown} ${headerDropdownStyles.menu__dropdown_visible} `
@@ -30,13 +30,13 @@ console.log(dropDownData);
       onMouseEnter={() => setDropDownVisible(true)}
       onMouseLeave={() => setDropDownVisible(false)}
     >
-      {dropDownData.map((link:any, i:number) => (
-        <li className={headerDropdownStyles.menu__dropdownItem}>
+      {dropDownData.map((link, i:number) => (
+        <li className={headerDropdownStyles.menu__dropdownItem} key={i+123}>
           <Link
             to="/"
             onClick={closeMenu}
             className={`${headerNavStyles.menu__link} ${headerDropdownStyles.menu__link_dropdown}`}
-            key={i}
+            
           >
             {link.title}
           </Link>
@@ -47,9 +47,7 @@ console.log(dropDownData);
   ) : (
     <div className={dropdownStylesMobile}>
       <ul className={headerDropdownStyles.menu__mobileLinks}>
-        {}
-
-        <li className={headerNavStyles.menu__item}>
+                <li className={headerNavStyles.menu__item}>
           <Link
             to="/"
             onClick={closeMenu}

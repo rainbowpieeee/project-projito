@@ -99,3 +99,7 @@ li {
     grid-column: span 2;
   }
 }
+
+.link {
+  text-decoration: none;
+}

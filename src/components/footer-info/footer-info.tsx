@@ -2,15 +2,12 @@ import { FC } from "react";
 import footerInfoStyles from "./footer-info.module.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants/index";
+import { API_URL_FOR_IMAGE } from "../../constants/index";
+import {IFooterProps} from "../../services/types/layout"
 
-interface IFooterInfo {
-  logos: any;
-  footerLinks: any;
-  footerSocial: any;
-}
+type  FooterInfo = Omit<IFooterProps, "footerMenu">
 
-export const FooterInfo: FC<IFooterInfo> = ({
+export const FooterInfo: FC<FooterInfo> = ({
   logos,
   footerLinks,
   footerSocial,
@@ -23,7 +20,7 @@ export const FooterInfo: FC<IFooterInfo> = ({
         <Link to="/" className={footerInfoStyles.link}>
           <img
             className={footerInfoStyles.mainLogo}
-            src={`${BASE_URL}${logos[0].icon}`}
+            src={`${API_URL_FOR_IMAGE}${logos[0].icon}`}
             alt={logos[0].alt_text}
           />
         </Link>
@@ -35,14 +32,14 @@ export const FooterInfo: FC<IFooterInfo> = ({
         >
           <img
             className={footerInfoStyles.euLogo}
-            src={`${BASE_URL}${logos[1].icon}`}
+            src={`${API_URL_FOR_IMAGE}${logos[1].icon}`}
             alt={logos[1].alt_text}
           />
         </a>
       </div>
       <section className={footerInfoStyles.social}>
         <ul className={footerInfoStyles.links}>
-          {footerSocial.map((link:any, i:number) => (
+          {footerSocial.map((link, i:number) => (
             <li className={footerInfoStyles.item} key={i}>
               <a
                 href={link.url}
@@ -51,7 +48,7 @@ export const FooterInfo: FC<IFooterInfo> = ({
                 className={footerInfoStyles.link}
               >
                 <img
-                  src={`${BASE_URL}${link.icon}`}
+                  src={`${API_URL_FOR_IMAGE}${link.icon}`}
                   className={footerInfoStyles.icon}
                   alt={link.title}
                 />
@@ -65,7 +62,7 @@ export const FooterInfo: FC<IFooterInfo> = ({
       <section className={footerInfoStyles.legal}>
         <ul className={footerInfoStyles.legals}>
 
-        {footerLinks.map((link:any, i :number ) => <li className={footerInfoStyles.item} key = {i+88}>
+        {footerLinks.map((link, i :number ) => <li className={footerInfoStyles.item} key = {i+88}>
             <a className={footerInfoStyles.link}
             href={link.url}
             >
