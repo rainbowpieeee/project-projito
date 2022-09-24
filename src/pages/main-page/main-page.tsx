@@ -66,26 +66,22 @@ const MainPage: FC = () => {
     title: string;
   };
   const newsForSlider = newsDatas
-    ? newsDatas.map(
-        (obj: {
-          date_published: string;
-          tags: string | null | undefined;
-          annotation: string;
-          cover: string;
-          id: string | number | undefined;
-        }) => {
-          return (
-            <NewsItem
-              date={obj.date_published}
-              tag={obj.tags}
-              text={obj.annotation}
-              image={`https://dev.archive.prozhito.org/${obj.cover}`}
-              imageMobile={obj.cover}
-              key={obj.id}
-            />
-          );
-        }
-      )
+
+    ? newsDatas.map((obj: { slug: string; date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => {
+      console.log(obj)
+        return (
+          <NewsItem
+            date={obj.date_published}
+            slug={obj.slug}
+            tag={obj.tags}
+            text={obj.annotation}
+            image={`https://dev.archive.prozhito.org/${obj.cover}`}
+            imageMobile={obj.cover}
+            key={obj.id}
+          />
+        );
+      })
+
     : [];
 
   if (isNewsLoading || isDiaryLoading || isJournalLoading) {

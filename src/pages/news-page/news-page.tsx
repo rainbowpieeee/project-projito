@@ -56,7 +56,7 @@ const NewsPage: FC = () => {
       {!isLoading && newsDatas && (
         <>
           <ul className={newsPageStyle.container}>
-            {newsDatas.map((obj: { date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => (
+            {newsDatas.map((obj: { slug: string; date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => (
               <li key={obj.id}>
                 <NewsItem
                   date={obj.date_published}
@@ -64,6 +64,7 @@ const NewsPage: FC = () => {
                   text={obj.annotation}
                   image={`https://dev.archive.prozhito.org/${obj.cover}`}
                   imageMobile={obj.cover}
+                  slug={obj.slug}
                   key={obj.id}
                 />
               </li>
