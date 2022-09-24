@@ -31,7 +31,7 @@ const MainPage: FC = () => {
   ).category;
   const journalData = data?.blocks.find(
     (block: any) => block.layout === "journal"
-  ).category;
+  );
 
   const newsDatas = useSelector((store) => (store as any).news.data);
 
@@ -75,7 +75,7 @@ const MainPage: FC = () => {
     : [];
 
   const journalForSlider = journalData
-    ? journalData.items.map((item: IJournalItem) => {
+    ? journalData.category.items.map((item: any) => {
         return <JournalItem item={item} key={item.id} />;
       })
     : [];
@@ -109,11 +109,11 @@ const MainPage: FC = () => {
       {journalData && (
         <section className={pageStyles.page__overflow}>
           <CardsSlider
-            title={journalData.title}
-            textLink={journalData.archive_link_label}
+            title={journalData.category.title}
+            textLink={journalData.category.archive_link_label}
             cards={journalForSlider}
-            sliderTitle={journalData.subtitle}
-            to={`/${journalData.slug}`}
+            sliderTitle={journalData.category.subtitle}
+            to={`/${journalData.category.slug}`}
             slider={true}
           />
         </section>

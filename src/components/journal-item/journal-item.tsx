@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { API_URL_FOR_IMAGE } from "../../constants";
 import { IJournalItem } from "../../services/types/journal";
@@ -7,10 +6,11 @@ import journalItemStyles from "./journal-item.module.css";
 
 interface IJournalItemProps {
   item: IJournalItem;
-  //slug: any;
 }
-export const JournalItem: FC<IJournalItemProps> = ({ item }) => {
-  const itemTypeName = item.tags.map((tag) => tag != "Тематическая подборка")
+export const JournalItem: FC<any> = ({ item }) => {
+  const itemTypeName = item.tags.map(
+    (tag: string) => tag != "Тематическая подборка"
+  )
     ? "Спецпроект"
     : "Тематическая подборка";
 

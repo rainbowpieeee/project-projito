@@ -11,8 +11,6 @@ import {
   setJournalFilter,
   setJournalPage,
 } from "../../services/slices/journal";
-import { TJournalFilter } from "../../services/types/journal";
-import Tabs from "../../components/tabs/tabs";
 import TabItem from "../../components/tabs-item/tabs-item";
 import journalPageStyles from "./journal-page.module.css";
 import { JournalItem } from "../../components/journal-item/journal-item";
@@ -25,6 +23,7 @@ import {
 } from "../../constants";
 import Loader from "../../components/loader/loader";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
+import { TJournalTags } from "../../services/types/journal";
 
 const JournalPage: FC = () => {
   const dispatch = useDispatch();
@@ -32,13 +31,12 @@ const JournalPage: FC = () => {
   const page = useSelector(pageJournalSelector);
   const total = useSelector(totalJournalSelector);
   const journal = useSelector(dataJournalSelector);
-  const [selectedTab, setSelectedTab] = useState<TJournalFilter>(filter);
-  const data: any = dataAPI.useGetFrontpageDataQuery();
-  const journalData = data.data?.blocks.find(
-    (block: any) => block.layout === "journal"
-  ).category;
+  const [selectedTab, setSelectedTab] = useState<string>(filter);
+
   const tablet = useMediaQuery("(max-width: 1024px)");
   const mobile = useMediaQuery("(max-width: 425px)");
+
+  const journalTags = journal.category_tags;
 
   let pageLimit = JOURNAL_PAGE_LIMIT_DESKTOP;
   if (tablet) {
@@ -56,54 +54,44 @@ const JournalPage: FC = () => {
     dispatch(setJournalPage(page + 1));
   };
 
-  const handleFilter = (value: TJournalFilter) => {
+  const handleFilter = (value: string) => {
     setSelectedTab(value);
     dispatch(setJournalFilter(value));
   };
 
   if (isJournalLoading) return <Loader />;
-
   return (
     <main className={journalPageStyles.main}>
       <Breadcrumbs />
-      <h1 className={journalPageStyles.heading}>
-        {/* Журнал &laquo;Прожито&raquo; */}
-        {journalData.title}
-      </h1>
-      <Tabs>
+      <h1 className={journalPageStyles.heading}>{journal.title}</h1>
+      <p className={journalPageStyles.heading_tags}>Сортировать :</p>
+      <ul className={journalPageStyles.tabs}>
         <TabItem
           value={"all"}
           selected={selectedTab === "all"}
           setSelected={() => handleFilter("all")}
+          name={"Все"}
         />
-        <TabItem
-          value={"topic"}
-          selected={selectedTab === "topic"}
-          setSelected={() => handleFilter("topic")}
-        />
-        <TabItem
-          value={"project"}
-          selected={selectedTab === "project"}
-          setSelected={() => handleFilter("project")}
-        />
-        <TabItem
-          value={"experience"}
-          selected={selectedTab === "experience"}
-          setSelected={() => handleFilter("experience")}
-        />
-        <TabItem
-          value={"kids"}
-          selected={selectedTab === "kids"}
-          setSelected={() => handleFilter("kids")}
-        />
-      </Tabs>
+        {journalTags &&
+          journalTags.map((tag: TJournalTags) => (
+            <TabItem
+              value={tag.slug}
+              selected={selectedTab === tag.slug}
+              setSelected={() => handleFilter(tag.slug)}
+              name={
+                journalTags.find(({ slug }: any) => slug === tag.slug).title
+              }
+            />
+          ))}
+      </ul>
       {!isJournalLoading && journal && (
         <ul className={journalPageStyles.list}>
-          {journal.map((item) => (
-            <li className={journalPageStyles.list__item}>
-              <JournalItem key={item.id} item={item} />
-            </li>
-          ))}
+          {journal &&
+            journal.items?.map((item: any) => (
+              <li className={journalPageStyles.list__item}>
+                <JournalItem key={item.id} item={item} />
+              </li>
+            ))}
         </ul>
       )}
       <div className={journalPageStyles.buttonContainer}>

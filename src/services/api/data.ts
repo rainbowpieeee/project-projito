@@ -3,7 +3,6 @@ import { getDefaultHeaders } from "./index";
 import { INewsItem, TNewsRequest } from "../types/news";
 import {
   BASE_API_URL,
-  BASE_URL,
   JOURNAL_MAIN_LIMIT,
   NEWS_MAIN_LIMIT,
   PROJECTS_LIMIT,
@@ -83,12 +82,9 @@ export const dataAPI = createApi({
         },
       }),
     }),
-    getJournal: build.query<
-      { data: Array<IJournalItem>; total: number },
-      TJournalRequest
-    >({
+    getJournal: build.query<{ data: any; total: number }, TJournalRequest>({
       query: ({ page, size, filter }) => ({
-        url: `/journal`,
+        url: `category/journal`,
         params:
           filter === "all"
             ? {
@@ -98,19 +94,19 @@ export const dataAPI = createApi({
             : {
                 _page: page,
                 _limit: size,
-                type: filter,
+                tag: filter,
               },
       }),
-      transformResponse(data: Array<IJournalItem>, meta) {
+      transformResponse(data: any, meta) {
         return {
           data,
           total: Number(meta?.response?.headers.get(X_TOTAL_COUNT)),
         };
       },
     }),
-    getMainJournal: build.query<ReadonlyArray<IJournalItem>, void>({
+    getMainJournal: build.query<ReadonlyArray<any>, void>({
       query: () => ({
-        url: `/journal`,
+        url: `category/journal`,
         params: {
           _page: 1,
           _limit: JOURNAL_MAIN_LIMIT,

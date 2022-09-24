@@ -1,6 +1,3 @@
-import { TJournalFilterDictionary } from "../services/types/journal";
-
-export const BASE_URL = "://localhost:30http01/api";
 export const BASE_API_URL = "https://dev.archive.prozhito.org/api/landing";
 export const API_URL_FOR_IMAGE = "https://dev.archive.prozhito.org";
 export const NEWS_PAGE_LIMIT_DESKTOP = 9;
@@ -13,13 +10,5 @@ export const JOURNAL_PAGE_LIMIT_MOBILE = 3;
 export const JOURNAL_MAIN_LIMIT = 6;
 export const PROJECTS_LIMIT = 2;
 export const X_TOTAL_COUNT = "X-Total-Count";
-
-export const JOURNAL_ITEM_TYPE: TJournalFilterDictionary = {
-  all: "ВСЕ",
-  topic: "Тематическая подборка",
-  project: "Ерунда",
-  experience: "опыт читателя",
-  kids: "Детство",
-};
 
 export const MOBYLE_MEDIA_QUERY = "(max-width:767px)";

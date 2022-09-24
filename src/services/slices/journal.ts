@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { dataAPI } from "../api/data";
 import { JOURNAL_PAGE_LIMIT_DESKTOP } from "../../constants";
-import { IJournalData, TJournalFilter } from "../types/journal";
+import { IJournalData, TJournalData } from "../types/journal";
 
 const initialState: IJournalData = {
   page: 1,
@@ -17,9 +17,8 @@ export const journalSlice = createSlice({
   reducers: {
     setJournalPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
-      console.log(action.payload);
     },
-    setJournalFilter: (state, action: PayloadAction<TJournalFilter>) => {
+    setJournalFilter: (state, action: PayloadAction<any>) => {
       state.page = 1;
       state.data = [];
       state.filter = action.payload;
@@ -28,23 +27,11 @@ export const journalSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addMatcher(
-        dataAPI.endpoints.getFrontpageData.matchFulfilled,
+        dataAPI.endpoints.getJournal.matchFulfilled,
         (state, action) => {
-          const [journalBlock] = action.payload.blocks?.filter(
-            (obj: { layout: string }) => obj.layout === "journal"
-          );
           if (state.page === 1) {
-            state.data = journalBlock.category.items;
-          } else {
-            const reduced = state.data.filter(
-              (stateItem) =>
-                !journalBlock.category.items.find(
-                  (payloadItem: { id: any }) => stateItem.id === payloadItem.id
-                )
-            );
-            state.data = reduced.concat(action.payload.data);
+            state.data = action.payload.data;
           }
-          state.total = action.payload.blocks.length;
         }
       )
       .addMatcher(
