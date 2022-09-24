@@ -4,7 +4,7 @@ import { IntroItem, IntroItemProps } from "../intro-item/intro-item";
 
 
 interface IIntroProps {
-  introData:[]
+  introData:Array<IntroItemProps>
 }
 
 export const Intro: FC<IIntroProps> = (props:IIntroProps) => {

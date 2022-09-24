@@ -4,7 +4,7 @@ import { IBanner } from "../../services/types/banner";
 import bannerStyles from "./banner.module.css";
 import { LinkButton } from "../link-button/link-button";
 import useMediaQuery from "../../hooks/useMediaQuery";
-import { BASE_URL } from "../../constants/index";
+import { API_URL_FOR_IMAGE } from "../../constants/index";
 
 // to={`/sample/${data.sample}}`}
 
@@ -25,7 +25,7 @@ const Banner: FC<IBannerProps> = ({ title, annotation, cover, links }) => {
     <article className={bannerStyles.banner}>
       <img
         className={bannerStyles.banner__image}
-        src={`${BASE_URL}${cover}`}
+        src={`${API_URL_FOR_IMAGE}${cover}`}
         alt={title}
       />
       <h2 className={bannerStyles.banner__title}>{title}</h2>

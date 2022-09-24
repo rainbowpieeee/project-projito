@@ -34,7 +34,7 @@ export const Layout: FC<LayoutProps> = ({ children } : LayoutProps) => {
     <>
     {headerdata.logos && <Header {...headerdata} />}
 
-      <Breadcrumbs />
+
         {children}
       <Footer {...footerdata} />
     </>

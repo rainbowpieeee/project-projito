@@ -10,7 +10,6 @@ const initialState: INewsData = {
   data: [],
 }
 
-console.log(initialState.data)
 
 export const newsSlice = createSlice({
   name: 'news',
@@ -27,7 +26,6 @@ export const newsSlice = createSlice({
         const [newsCategory] = allData?.filter((obj: { layout: string; }) => obj.layout === 'news')
         const news = newsCategory.category.items
         if (state.page === 1) {
-          console.log(action.payload)
           state.data = news
         } else {
           const reduced = state.data.filter(stateItem => !news.find((payloadItem: { id: number; }) => stateItem.id === payloadItem.id))
