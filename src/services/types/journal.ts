@@ -1,23 +1,3 @@
-import { IListItem } from "./index";
-
-export type TJournalType = "topic" | "project" | "experience";
-
-export interface IJournalAbstractItem extends IListItem {
-  type: TJournalType;
-  image: string;
-  text: string;
-}
-
-export interface IJournalMagazineItem extends IJournalAbstractItem {
-  title: string;
-  subtitle: string;
-}
-
-export interface IJournalExperienceItem extends IJournalAbstractItem {
-  name: string;
-}
-
-//export type IJournalItem = IJournalMagazineItem | IJournalExperienceItem;
 export type IJournalItem = {
   annotation: string;
   cover: string;
@@ -25,22 +5,31 @@ export type IJournalItem = {
   layout: string;
   slug: string;
   subtitle: string;
-  tags: any;
+  tags: Array<string>;
   title: string;
   id?: number;
 };
-export type TJournalFilter = "all" | TJournalType;
-
-export type TJournalFilterDictionary = {
-  [x in TJournalFilter]?: string;
+export type TJournalTags = {
+  slug: string;
+  title: string;
 };
-
 export interface IJournalData {
   page: number;
   size: number;
-  filter: TJournalFilter;
+  filter: string;
   total: number;
-  data: Array<IJournalItem>;
+  data: any;
 }
+export type TJournalData = {
+  archive_layout: string;
+  category_tags: any;
+  items: any;
+  pageNumber: number;
+  pageSize: number;
+  slug: string;
+  title: string;
+  totalCount: number;
+  totalPages: number;
+};
 
 export type TJournalRequest = Omit<IJournalData, "data" | "total">;
