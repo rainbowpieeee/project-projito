@@ -27,6 +27,7 @@ opacity: .8;
       height: 386px;
       margin: 24px 0 0;
       background-color: var(--bg-white);
+      align-self: flex-end;
   }
 
   .card:first-child {

@@ -11,7 +11,6 @@
   .project {
     padding: 56px 0 0;
     width: 736px;
-    margin-bottom: 50px;
     min-height: unset;
   }
 }
@@ -64,9 +63,8 @@
 }
 
 .title {
-  margin: 0 0 40px;
   padding: 0;
-  font: normal 46px/1.2 var(--font-family-wf-pt-sans);
+  font: normal 46px var(--font-family-wf-pt-sans);
   color: var(--black-100);
   text-align: center;
 }
@@ -90,4 +88,12 @@
   }
 }
 
+@media screen and (min-width: 1401px) {
+  .title {
+    padding: 56px 0 40px;
+    margin-bottom: 24px;
+    font-size: 46px;
+    line-height: 37px;
+  }
+}
 
