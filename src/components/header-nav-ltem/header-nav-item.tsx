@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import { EventHandler, FC, MouseEventHandler, useState } from "react";
 import headerNavItemStyles from "./header-nav-item.module.css";
-import { IMenuLink } from "../../services/types/layout";
+import { ILink } from "../../services/types/layout";
 
 type THeaderNavItem = {
-  linkData: IMenuLink;
-  onMouseEnter: (
-    children:
-      | [{ title: string; page_slug: string; url: string; children?: [string] }]
-      | undefined
-  ) => void;
-  onMouseLeave: () => void;
-};
+
+  linkData:ILink;
+  onMouseEnter: (children:[{title: string;
+    page_slug: string;
+    url: string;
+    children?: [string];}] | undefined)=>void;
+  onMouseLeave: ()=>void;
+}
+
 
 export const HeaderNavItem: FC<THeaderNavItem> = ({
   linkData,

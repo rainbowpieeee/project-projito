@@ -67,7 +67,7 @@ const MainPage: FC = () => {
   return (
     <main>
       {popupData && popupOpen && (
-        <Popup data={popupData} closePopup={() => setPopupOpen(false)} />
+        <Popup data={popupData} closePopup={setPopupOpen} />
       )}
       <Intro introData={introData} />
       {newsForSlider && (

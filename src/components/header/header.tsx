@@ -5,12 +5,14 @@ import openImg from "../../images/menu-mobil-open.svg";
 import closeImg from "../../images/menu-mobil-close.svg";
 import HeaderNav from "../headerNav/headerNav";
 import useMediaQuery from "../../hooks/useMediaQuery";
-import { API_URL_FOR_IMAGE } from "../../constants/index";
-import { IHeaderProps } from "../../services/types/layout";
+
+import {API_URL_FOR_IMAGE, DESKTOP_MEDIA_QUERY} from "../../constants/index"
+import {IHeaderProps} from "../../services/types/layout"
+
 
 const Header: FunctionComponent<IHeaderProps> = ({ logos, mainMenu }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const desktop = useMediaQuery("(min-width: 768px)");
+  const desktop = useMediaQuery(DESKTOP_MEDIA_QUERY);
   const location = useLocation();
 
   const btnState = menuOpen

@@ -4,6 +4,7 @@ import { MaterialsItem } from "../materials-item/materials-item";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IMaterialsProps } from "../../services/types/materials";
+import { DESKTOP_MEDIA_QUERY} from "../../constants/index"
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,7 +14,9 @@ import "swiper/css/scrollbar";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 export const Materials: FC<IMaterialsProps> = ({ title, cards }) => {
-  const desktop = useMediaQuery("(min-width: 768px)");
+
+  const desktop = useMediaQuery(DESKTOP_MEDIA_QUERY)
+
   return (
     <section className={materialsStyle.materials}>
       <h2 className={materialsStyle.title}>{title}</h2>

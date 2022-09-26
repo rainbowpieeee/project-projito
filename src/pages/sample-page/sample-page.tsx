@@ -71,9 +71,9 @@ const SamplePage: FC = () => {
     };
 
     const getTime = (num: number) => {
-      let hours = Math.floor(num / 3600);
-      let minutes = Math.floor((num - hours * 3600) / 60);
-      let seconds = Math.floor(num - hours * 3600 - minutes * 60);
+      const hours = Math.floor(num / 3600);
+      const minutes = Math.floor((num - hours * 3600) / 60);
+      const seconds = Math.floor(num - hours * 3600 - minutes * 60);
       if (hours === 0) {
         return `${String(minutes).padStart(2, "0")}:${String(
           seconds % 60
