@@ -39,29 +39,15 @@ const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
             to="/"
             onClick={closeMenu}
             className={`${headerNavStyles.menu__link} ${headerDropdownStyles.menu__link_dropdown}`}
-            
+
           >
             {link.title}
           </Link>
         </li>
       ))}
-      
+
     </ul>
   ) : (
-    <div className={dropdownStylesMobile}>
-      <ul className={headerDropdownStyles.menu__mobileLinks}>
-                <li className={headerNavStyles.menu__item}>
-          <Link
-            to="/"
-            onClick={closeMenu}
-            className={headerNavStyles.menu__link}
-          >
-            О&nbsp;прожито
-          </Link>
-        </li>
-
-      </ul>
-    ) : (
       <div className={dropdownStylesMobile}>
         <ul className={headerDropdownStyles.menu__mobileLinks}>
           <li className={headerNavStyles.menu__item}>
