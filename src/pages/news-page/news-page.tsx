@@ -17,7 +17,9 @@ import { LinkButton } from "../../components/link-button/link-button";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import NewsItem from "../../components/news-item/news-item";
 import Loader from "../../components/loader/loader";
-import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs"
+import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
+import { API_URL_FOR_IMAGE } from "../../constants";
+import { TObj } from "../../services/types/news";
 
 const NewsPage: FC = () => {
   const dispatch = useDispatch();
@@ -25,9 +27,7 @@ const NewsPage: FC = () => {
   const data = useSelector(dataNewsSelector);
   const total = useSelector(totalNewsSelector);
 
-  const newsDatas = useSelector(
-    (store) => (store as any).news.data
-  );
+  const newsDatas = useSelector((store) => (store as any).news.data);
 
   const tablet = useMediaQuery("(max-width: 1023px)");
   const mobile = useMediaQuery("(max-width: 767px)");
@@ -48,25 +48,27 @@ const NewsPage: FC = () => {
     dispatch(setNewsPage(page + 1));
   };
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <Loader />;
 
   return (
     <div className={newsPageStyle.main}>
-      <Breadcrumbs/>
+      <Breadcrumbs />
       <h1 className={newsPageStyle.title}>Новости и события</h1>
       {!isLoading && newsDatas && (
         <>
           <ul className={newsPageStyle.container}>
-            {newsDatas.map((obj: { slug: string; date_published: string; tags: string | null | undefined; annotation: string; cover: string; id: string | number | undefined; }) => (
-              <li key={obj.id}>
+            {newsDatas.map((obj: TObj, i: number) => (
+              <li key={i}>
                 <NewsItem
-                  date={obj.date_published}
-                  tag={obj.tags}
-                  text={obj.annotation}
-                  image={`https://dev.archive.prozhito.org/${obj.cover}`}
-                  imageMobile={obj.cover}
+                  date_published={obj.date_published}
                   slug={obj.slug}
-                  key={obj.id}
+                  tags={obj.tags}
+                  annotation={obj.annotation}
+                  cover={`${API_URL_FOR_IMAGE}/${obj.cover}`}
+                  layout={obj.layout}
+                  subtitle={obj.subtitle}
+                  title={obj.title}
+                  key={i}
                 />
               </li>
             ))}

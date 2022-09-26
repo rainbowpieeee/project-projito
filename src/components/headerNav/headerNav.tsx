@@ -38,7 +38,7 @@ const HeaderNav: FunctionComponent<IHeaderNavProps> = ({
       <nav className={`${desktop ? "" : isMobileContainerStyle} header__nav`}>
         <ul className={style}>
           {menuLinks.map((link, i: number) => (
-            <li className={headerNavStyles.menu__item} key={i+20}>
+            <li className={headerNavStyles.menu__item} key={i + 20}>
               <HeaderNavItem
                 linkData={link}
                 onMouseEnter={handleMouseEnter}
@@ -46,12 +46,24 @@ const HeaderNav: FunctionComponent<IHeaderNavProps> = ({
               ></HeaderNavItem>
               {!desktop && link.children && (
                 <ul className={headerNavStyles.mobileSubMenu}>
-                  {link.children.map((sublink, i:number ) => (
-                    <li key = {i+200} className={headerNavStyles.mobileSubMenuItem}>
+                  {link.children.map((sublink, i: number) => (
+                    <li
+                      key={i + 200}
+                      className={headerNavStyles.mobileSubMenuItem}
+                    >
                       {sublink.page_slug ? (
-                        <Link to={sublink.page_slug}className={headerNavStyles.mobileSubMenuLink}>{sublink.title}</Link>
+                        <Link
+                          to={sublink.page_slug}
+                          className={headerNavStyles.mobileSubMenuLink}
+                        >
+                          {sublink.title}
+                        </Link>
                       ) : (
-                        <a href={sublink.url} target="_blank" className={headerNavStyles.mobileSubMenuLink}>
+                        <a
+                          href={sublink.url}
+                          target="_blank"
+                          className={headerNavStyles.mobileSubMenuLink}
+                        >
                           {sublink.title}
                         </a>
                       )}

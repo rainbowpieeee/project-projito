@@ -1,13 +1,10 @@
-
 export interface ILayoutData {
   logos: Array<ILogo>;
   main_menu: Array<IMenuLink>;
   footer_menu: Array<IMenuLink>;
   footer_links: Array<IFooterLink>;
-  footer_social: Array<IFooterSocial>
+  footer_social: Array<IFooterSocial>;
 }
-
-
 
 export interface ILogo {
   alt_text: string;
@@ -69,5 +66,3 @@ export interface IFooterProps {
   footerLinks: Array<IFooterLink>;
   footerSocial: Array<IFooterSocial>;
 }
-
-

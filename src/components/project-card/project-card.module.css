@@ -9,29 +9,30 @@
 }
 
 .card:hover {
-opacity: .8;
+  opacity: 0.8;
 }
 
-@media screen and (max-width: 1400px) { /* планшетная версия до ширины экрана в 1023px*/
+@media screen and (max-width: 1400px) {
+  /* планшетная версия до ширины экрана в 1023px*/
   .card {
-      max-width: 359px;
-      min-height: 354px;
-      flex-direction: column;
-      margin-right: 14px;
+    max-width: 359px;
+    min-height: 354px;
+    flex-direction: column;
+    margin-right: 14px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .card {
-      width: 100%;
-      height: 386px;
-      margin: 24px 0 0;
-      background-color: var(--bg-white);
-      align-self: flex-end;
+    width: 100%;
+    height: 386px;
+    margin: 24px 0 0;
+    background-color: var(--bg-white);
+    align-self: flex-end;
   }
 
   .card:first-child {
-      margin: 0;
+    margin: 0;
   }
 }
 
@@ -44,14 +45,14 @@ opacity: .8;
 
 @media screen and (max-width: 1400px) {
   .image {
-      max-width: 359px;
-      height: 182px;
-      margin: 0;
+    max-width: 359px;
+    height: 182px;
+    margin: 0;
   }
 }
 @media screen and (max-width: 767px) {
   .image {
-      height: 200px;
+    height: 200px;
   }
 }
 
@@ -78,19 +79,19 @@ opacity: .8;
     width: 334px;
     border: solid 1px var(--bg-orange-light);
     border-top: none;
-}
+  }
 }
 @media screen and (max-width: 1400px) {
   .field {
-      margin: 0 auto;
-      width: 338px;
+    margin: 0 auto;
+    width: 338px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .field {
-      margin-left: 8px;
-      max-width: 327px;
+    margin-left: 8px;
+    max-width: 327px;
   }
 }
 
@@ -150,7 +151,8 @@ opacity: .8;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 18px;margin: 0 0 17px;
+  line-height: 18px;
+  margin: 0 0 17px;
 }
 
 @media screen and (max-width: 1400px) {

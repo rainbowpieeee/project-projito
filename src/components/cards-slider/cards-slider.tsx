@@ -81,7 +81,7 @@ const Slider: FC<{ arr: readonly JSX.Element[]; title: string }> = ({
           <NavBtn direction="right" disabled={disabledNextBtn} />
         </div>
       </div>
-      {arr.map((item: JSX.Element, index:number) => (
+      {arr.map((item: JSX.Element, index: number) => (
         <SwiperSlide key={index} tag="li" className={styles.swiper__slide}>
           {item}
         </SwiperSlide>
@@ -106,9 +106,9 @@ const SliderMobile: FC<{ arr: readonly any[] }> = ({ arr }) => {
       }}
       modules={[EffectCards]}
     >
-      {arr.map((item, i:number) => (
+      {arr.map((item, i: number) => (
         <SwiperSlide
-          key={i+110}
+          key={i + 110}
           tag="li"
           className={styles.swiperMobile__slides}
         >
