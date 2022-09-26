@@ -10,8 +10,10 @@ import CardsSlider from "../../components/cards-slider/cards-slider";
 import NewsItem from "../../components/news-item/news-item";
 import { JournalItem } from "../../components/journal-item/journal-item";
 import Loader from "../../components/loader/loader";
-import { useSelector } from "react-redux";
+import { useSelector } from "../../hooks";
 import { IJournalItem } from "../../services/types/journal";
+import { API_URL_FOR_IMAGE } from "../../constants";
+import { TObj } from "../../services/types/news";
 
 const MainPage: FC = () => {
   const { data, isLoading }: any = dataAPI.useGetFrontpageDataQuery();
@@ -33,45 +35,26 @@ const MainPage: FC = () => {
     (block: any) => block.layout === "journal"
   );
 
-  const newsDatas = useSelector((store) => (store as any).news.data);
+  const newsDatas = useSelector((store) => store.news.data);
 
   const [popupOpen, setPopupOpen] = useState(true);
-  type TObj = {
-    annotation: string;
-    cover: string;
-    date_published: string;
-    layout: string;
-    slug: string;
-    subtitle: string;
-    tags: string[] | string;
-    title: string;
-  };
+
   const newsForSlider = newsDatas
-    ? newsDatas.map(
-        (
-          obj: {
-            slug: string;
-            date_published: string;
-            tags: string | null | undefined;
-            annotation: string;
-            cover: string;
-            id: string | number | undefined;
-          },
-          i: number
-        ) => {
-          return (
-            <NewsItem
-              date={obj.date_published}
-              slug={obj.slug}
-              tag={obj.tags}
-              text={obj.annotation}
-              image={`https://dev.archive.prozhito.org/${obj.cover}`}
-              imageMobile={obj.cover}
-              key={i}
-            />
-          );
-        }
-      )
+    ? newsDatas.map((obj: TObj, i: number) => {
+        return (
+          <NewsItem
+            date_published={obj.date_published}
+            slug={obj.slug}
+            tags={obj.tags}
+            annotation={obj.annotation}
+            cover={`${API_URL_FOR_IMAGE}/${obj.cover}`}
+            layout={obj.layout}
+            subtitle={obj.subtitle}
+            title={obj.title}
+            key={i}
+          />
+        );
+      })
     : [];
 
   const journalForSlider = journalData

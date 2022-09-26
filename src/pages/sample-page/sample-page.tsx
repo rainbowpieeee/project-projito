@@ -7,7 +7,7 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import ContentsMobile from "./contents-mobile/contents-mobile";
 import samplePageStyles from "./sample-page.module.css";
 import Loader from "../../components/loader/loader";
-import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs"
+import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
 
 const SamplePage: FC = () => {
   const [popupOpen, setPopupOpen] = useState(true);
@@ -166,25 +166,27 @@ const SamplePage: FC = () => {
 
   const { data, isLoading }: any = dataAPI.useGetPageDataQuery(name);
 
-
   const openContents = (): void => {
     setContentsOpen(true);
   };
 
-
-  if (isLoading) return <Loader/>
+  if (isLoading) return <Loader />;
 
   return (
     <main className={samplePageStyles.main}>
-            <Breadcrumbs />
+      <Breadcrumbs />
       <div className={samplePageStyles.tag}>
         {data.tags.map((tag: string, i: number) => (
-            <div className={samplePageStyles.tagWrapper} key = {i+800}>
-              <p className={samplePageStyles.tagPart} key = {i}>{tag}</p>
-              {i < data.tags.length-1 ? (
-                <p className={samplePageStyles.tagPart} key = {i+10}>&#183;</p>
-              ) : null}
-            </div>
+          <div className={samplePageStyles.tagWrapper} key={i + 800}>
+            <p className={samplePageStyles.tagPart} key={i}>
+              {tag}
+            </p>
+            {i < data.tags.length - 1 ? (
+              <p className={samplePageStyles.tagPart} key={i + 10}>
+                &#183;
+              </p>
+            ) : null}
+          </div>
         ))}
       </div>
       <button

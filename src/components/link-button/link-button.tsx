@@ -18,7 +18,7 @@ export const LinkButton: FC<{
   disabled?: boolean;
   direction?: "left" | "right";
   border?: boolean;
-  children?: string | null ;
+  children?: string | null;
   size?: "small" | "medium" | "large" | null;
   onClick?: (() => void) | ((e: SyntheticEvent) => void);
 }> = ({
@@ -88,7 +88,7 @@ export const LinkButton: FC<{
   );
 
   const buttonElement = (
-    <button className={className} onClick={() => window.open(`${to}`, "_blank")}>
+    <button className={className} onClick={onClick}>
       {children}
       {arrowImage}
     </button>

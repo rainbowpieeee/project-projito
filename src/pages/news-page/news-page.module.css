@@ -19,7 +19,7 @@
   align-items: baseline;
 }
 
-.breadcrumbs{
+.breadcrumbs {
   font-family: var(--font-family-pt-sans);
   font-style: normal;
   font-weight: 400;
@@ -30,17 +30,17 @@
   margin: 20px auto 39px 20px;
 }
 
-.breadcrumbsLink{
+.breadcrumbsLink {
   text-decoration: none;
   color: var(--black-100);
 }
 
-.breadcrumbsLink:hover{
+.breadcrumbsLink:hover {
   border-bottom: var(--black-100) solid 1px;
 }
 
 @media screen and (max-width: 1023px) {
-  .breadcrumbs{
+  .breadcrumbs {
     margin: 20px auto 24px 15px;
   }
   .container {

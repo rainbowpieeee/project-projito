@@ -9,37 +9,36 @@ import { Link } from "react-router-dom";
 export type TNewsItemProps = Omit<INewsItem, "id">;
 
 const NewsItem: FC<TNewsItemProps> = ({
-  date,
+  annotation,
+  cover,
+  date_published,
+  layout,
   slug,
-  tag,
-  image,
-  imageMobile,
-  text,
+  subtitle,
+  tags,
+  title,
 }) => {
   const displayMobile = useMediaQuery(MOBYLE_MEDIA_QUERY);
   return (
     <article className={styles.newsItem}>
       <Link className={styles.link} to={`/page/${slug}`}>
-      <div className={styles.newsItem__titleContainer}>
-        {
-          date && (
-            <time dateTime={date} className={styles.newsItem__date}>
-              {date}
+        <div className={styles.newsItem__titleContainer}>
+          {date_published && (
+            <time dateTime={date_published} className={styles.newsItem__date}>
+              {date_published}
             </time>
-          )
-        }
-        <h3 className={styles.newsItem__title}>{tag}</h3>
-      </div>
-      <img
-        width={212}
-        height={223}
-        src={image}
-        alt={tag ?? "Картинка к новости"}
-        className={styles.newsItem__image}
-      />
-      <p className={styles.newsItem__text}>{text}</p>
+          )}
+          <h3 className={styles.newsItem__title}>{tags}</h3>
+        </div>
+        <img
+          width={212}
+          height={223}
+          src={cover}
+          alt={"Картинка к новости"}
+          className={styles.newsItem__image}
+        />
+        <p className={styles.newsItem__text}>{annotation}</p>
       </Link>
-
     </article>
   );
 };

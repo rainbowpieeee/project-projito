@@ -17,7 +17,7 @@
   height: 440px;
   object-fit: cover;
 }
-.banner__title{
+.banner__title {
   font-family: var(--font-family-wf);
   font-weight: 400;
   font-size: 36px;
@@ -25,7 +25,7 @@
   text-align: start;
   margin: 0;
 }
-.banner__text{
+.banner__text {
   font-family: var(--font-family-pt-sans);
   font-style: normal;
   font-weight: 400;
@@ -54,20 +54,19 @@
     width: 174px;
     height: 259px;
   }
-  .banner__title{
+  .banner__title {
     font-size: 24px;
     line-height: 1.25;
   }
-  .banner__text{
+  .banner__text {
     font-size: 14px;
     line-height: 1.28;
     margin: 13px 0 0;
-
   }
 }
 
 @media screen and (max-width: 780px) {
-  .banner{
+  .banner {
     column-gap: 50px;
   }
 }
@@ -86,26 +85,25 @@
     width: 164px;
     height: 258px;
   }
-  .banner__buttonsWrapper{
+  .banner__buttonsWrapper {
     min-height: 116px;
     flex-direction: column;
     align-items: center;
   }
 }
 
-@media screen and (max-width: 480px){
-  .banner{
+@media screen and (max-width: 480px) {
+  .banner {
     grid-template-rows: repeat(4, min-content);
   }
-  .banner__title{
+  .banner__title {
     max-width: 230px;
     margin: 0 auto;
     font-size: 26px;
     line-height: 1;
     text-align: center;
   }
-  .banner__text{
+  .banner__text {
     margin: 0;
   }
-
 }

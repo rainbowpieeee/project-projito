@@ -61,20 +61,20 @@
   transition: transform 1s ease-in;
 }
 
-@media screen and (max-width: 1023px){
-  .cards{
+@media screen and (max-width: 1023px) {
+  .cards {
     column-gap: 12px;
     margin: 0 auto;
     width: fit-content;
   }
 }
 
-.pagination{
+.pagination {
   margin-top: 18px;
   width: fit-content;
 }
 
-.materials .swiper{
+.materials .swiper {
   margin-left: 41px;
 }
 

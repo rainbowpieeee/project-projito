@@ -12,7 +12,6 @@ li {
 }
 
 .newsItem__image {
-
   width: 100%;
   max-width: 212px;
   min-width: 102px;
@@ -79,7 +78,7 @@ li {
     justify-content: space-between;
     align-content: flex-start;
   }
-  .newsItem__title{
+  .newsItem__title {
     font-style: italic;
   }
   .newsItem__image {
