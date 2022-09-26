@@ -106,9 +106,9 @@ const SliderMobile: FC<{ arr: readonly any[] }> = ({ arr }) => {
       }}
       modules={[EffectCards]}
     >
-      {arr.map((item, i: number) => (
+      {arr.map((item, index: number) => (
         <SwiperSlide
-          key={i + 110}
+          key={index}
           tag="li"
           className={styles.swiperMobile__slides}
         >

@@ -23,8 +23,7 @@ import {
 } from "../../constants";
 import Loader from "../../components/loader/loader";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
-import { TJournalTags } from "../../services/types/journal";
-
+import { IJournalItem, TJournalTags } from "../../services/types/journal";
 const JournalPage: FC = () => {
   const dispatch = useDispatch();
   const filter = useSelector(filterJournalSelector);
@@ -73,22 +72,21 @@ const JournalPage: FC = () => {
           name={"Все"}
         />
         {journalTags &&
-          journalTags.map((tag: TJournalTags) => (
+          journalTags.map((tag: TJournalTags, index: number) => (
             <TabItem
               value={tag.slug}
               selected={selectedTab === tag.slug}
               setSelected={() => handleFilter(tag.slug)}
-              name={
-                journalTags.find(({ slug }: any) => slug === tag.slug).title
-              }
+              name={tag.title}
+              key={index}
             />
           ))}
       </ul>
       {!isJournalLoading && journal && (
         <ul className={journalPageStyles.list}>
           {journal &&
-            journal.items?.map((item: any) => (
-              <li className={journalPageStyles.list__item}>
+            journal.items?.map((item: IJournalItem, index: number) => (
+              <li className={journalPageStyles.list__item} key={index}>
                 <JournalItem key={item.id} item={item} />
               </li>
             ))}

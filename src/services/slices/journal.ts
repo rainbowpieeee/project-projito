@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { dataAPI } from "../api/data";
 import { JOURNAL_PAGE_LIMIT_DESKTOP } from "../../constants";
-import { IJournalData, TJournalData } from "../types/journal";
+import { IJournalData} from "../types/journal";
 
 const initialState: IJournalData = {
   page: 1,
@@ -18,7 +18,7 @@ export const journalSlice = createSlice({
     setJournalPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
-    setJournalFilter: (state, action: PayloadAction<any>) => {
+    setJournalFilter: (state, action: PayloadAction<string>) => {
       state.page = 1;
       state.data = [];
       state.filter = action.payload;

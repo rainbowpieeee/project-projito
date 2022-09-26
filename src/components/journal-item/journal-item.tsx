@@ -7,7 +7,7 @@ import journalItemStyles from "./journal-item.module.css";
 interface IJournalItemProps {
   item: IJournalItem;
 }
-export const JournalItem: FC<any> = ({ item }) => {
+export const JournalItem: FC<IJournalItemProps> = ({ item }) => {
   const itemTypeName = item.tags.map(
     (tag: string) => tag != "Тематическая подборка"
   )

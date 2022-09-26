@@ -12,6 +12,7 @@ import { JournalItem } from "../../components/journal-item/journal-item";
 import Loader from "../../components/loader/loader";
 import { useSelector } from "../../hooks";
 import { IJournalItem } from "../../services/types/journal";
+import { TBlock } from "../../services/types/front-page";
 import { API_URL_FOR_IMAGE } from "../../constants";
 import { TObj } from "../../services/types/news";
 
@@ -20,19 +21,19 @@ const MainPage: FC = () => {
 
   const popupData = data?.anchored[0];
   const introData = data?.blocks.find(
-    (block: any) => block.layout === "actions"
+    (block: TBlock) => block.layout === "actions"
   ).cards;
   const materialsData = data?.blocks.find(
-    (block: any) => block.layout === "cards"
+    (block: TBlock) => block.layout === "cards"
   );
   const bannerData = data?.blocks.find(
-    (block: any) => block.layout === "card"
+    (block: TBlock) => block.layout === "card"
   ).cards;
   const specialData = data?.blocks.find(
-    (block: any) => block.layout === "special"
+    (block: TBlock) => block.layout === "special"
   ).category;
   const journalData = data?.blocks.find(
-    (block: any) => block.layout === "journal"
+    (block: TBlock) => block.layout === "journal"
   );
 
   const newsDatas = useSelector((store) => store.news.data);
@@ -58,7 +59,7 @@ const MainPage: FC = () => {
     : [];
 
   const journalForSlider = journalData
-    ? journalData.category.items.map((item: any) => {
+    ? journalData.category.items.map((item: IJournalItem) => {
         return <JournalItem item={item} key={item.id} />;
       })
     : [];

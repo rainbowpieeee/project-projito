@@ -13,23 +13,25 @@ export type TJournalTags = {
   slug: string;
   title: string;
 };
-export interface IJournalData {
+export type TJournalData = {
+  archive_layout?: string;
+  category_tags: Array<TJournalTags>;
+  items?: Array<IJournalItem>;
+  pageNumber?: number;
+  pageSize?: number;
+  slug?: string;
+  title?: string;
+  totalCount?: number;
+  totalPages?: number;
+};
+export interface IData<TJournalData> {
+  data: Array<TJournalData> | any;
+}
+export interface IJournalData extends IData<TJournalData> {
   page: number;
   size: number;
   filter: string;
   total: number;
-  data: any;
 }
-export type TJournalData = {
-  archive_layout: string;
-  category_tags: any;
-  items: any;
-  pageNumber: number;
-  pageSize: number;
-  slug: string;
-  title: string;
-  totalCount: number;
-  totalPages: number;
-};
 
 export type TJournalRequest = Omit<IJournalData, "data" | "total">;
