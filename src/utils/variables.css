@@ -19,12 +19,12 @@
   --button-hover: #97ba9c;
   --button-default: #a5cdab;
   --button-disabled: rgba(165, 205, 171, 0.3);
-  --swiper-pagination-bullet-inactive-color: #A5CDAB;
+  --swiper-pagination-bullet-inactive-color: #a5cdab;
   --swiper-pagination-bullet-inactive-opacity: 1;
   --swiper-pagination-bullet-opacity: 1;
   --swiper-pagination-bullet-horizontal-gap: 6px;
-  --swiper-pagination-color: #3A543E;
-  --font-family-pt-sans: 'PT Sans', Arial, sans-serif;
-  --font-family-wf: 'WF', Arial, sans-serif;
-  --font-family-wf-pt-sans: 'WF', 'PT Sans', Arial, sans-serif;
+  --swiper-pagination-color: #3a543e;
+  --font-family-pt-sans: "PT Sans", Arial, sans-serif;
+  --font-family-wf: "WF", Arial, sans-serif;
+  --font-family-wf-pt-sans: "WF", "PT Sans", Arial, sans-serif;
 }

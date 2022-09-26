@@ -121,7 +121,7 @@ h1 {
   .article blockquote {
     margin: 0 auto;
     padding: 0 0 0 12px;
-    width: 100%
+    width: 100%;
   }
   .article iframe {
     min-height: 320px;
@@ -245,7 +245,7 @@ h1 {
 }
 
 .player__button-reverse-anticlockwise:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .player__button-reverse-clockwise {
@@ -259,7 +259,7 @@ h1 {
 }
 
 .player__button-reverse-clockwise:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .player__soundtrack {
@@ -285,7 +285,7 @@ h1 {
 }
 
 .player__button-mute:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .player__button-unmute {
@@ -362,7 +362,7 @@ h1 {
   .player__button-unmute {
     background-image: url(../../../public/images/player/Mute_320px.svg);
     margin: 14px 10px 14px 0;
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 

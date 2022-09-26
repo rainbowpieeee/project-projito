@@ -8,7 +8,6 @@
   right: 0;
   order: 3;
   z-index: 9;
-
 }
 .popup__content {
   display: flex;
@@ -65,7 +64,7 @@
     top: 90px;
     padding: 12px 20px;
   }
-  .popup__closeButton{
+  .popup__closeButton {
     width: 17px;
     height: 17px;
     left: -21px;
@@ -89,7 +88,7 @@
     top: 54px;
     display: flex;
   }
-  .popup__closeButton{
+  .popup__closeButton {
     width: 12px;
     height: 12px;
     left: -13.5px;
