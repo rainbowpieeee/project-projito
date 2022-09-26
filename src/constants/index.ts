@@ -10,5 +10,5 @@ export const JOURNAL_PAGE_LIMIT_MOBILE = 3;
 export const JOURNAL_MAIN_LIMIT = 6;
 export const PROJECTS_LIMIT = 2;
 export const X_TOTAL_COUNT = "X-Total-Count";
-
 export const MOBYLE_MEDIA_QUERY = "(max-width:767px)";
+export const DESKTOP_MEDIA_QUERY = "(min-width:768px)";

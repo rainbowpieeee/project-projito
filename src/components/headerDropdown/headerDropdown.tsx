@@ -2,14 +2,14 @@ import headerDropdownStyles from "./headerDropdown.module.css";
 import headerNavStyles from "../headerNav/headerNav.module.css";
 import { Link } from "react-router-dom";
 import React, { FunctionComponent } from "react";
-import {IMenuLink} from "../../services/types/layout"
+import {ILink} from "../../services/types/layout"
 
 interface IHeaderDropdownProps {
   visible: boolean;
   desktop: boolean;
   setDropDownVisible: (visible: boolean) => void;
   closeMenu: () => void;
-  dropDownData?: Array<IMenuLink>;
+  dropDownData?: Array<ILink>;
 }
 const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
   visible,
@@ -31,7 +31,7 @@ const HeaderDropdown: FunctionComponent<IHeaderDropdownProps> = ({
       onMouseLeave={() => setDropDownVisible(false)}
     >
       {dropDownData.map((link, i:number) => (
-        <li className={headerDropdownStyles.menu__dropdownItem} key={i+123}>
+        <li className={headerDropdownStyles.menu__dropdownItem} key={i}>
           <Link
             to="/"
             onClick={closeMenu}

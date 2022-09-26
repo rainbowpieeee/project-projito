@@ -3,14 +3,13 @@ import { FunctionComponent, useState } from "react";
 import HeaderDropdown from "../headerDropdown/headerDropdown";
 import { HeaderNavItem } from "../header-nav-ltem/header-nav-item";
 import { IHeaderNavProps } from "../../services/types/layout";
-import { IMenuLink } from "../../services/types/layout";
 import { Link } from "react-router-dom";
 const HeaderNav: FunctionComponent<IHeaderNavProps> = ({
   desktop,
   open,
   closeMenu,
   menuLinks,
-}: IHeaderNavProps) => {
+}) => {
   const [dropDownVisible, setDropDownVisible] = useState(false);
   const [dropDownData, setDropDownData] = useState(null);
 
@@ -38,7 +37,7 @@ const HeaderNav: FunctionComponent<IHeaderNavProps> = ({
       <nav className={`${desktop ? "" : isMobileContainerStyle} header__nav`}>
         <ul className={style}>
           {menuLinks.map((link, i: number) => (
-            <li className={headerNavStyles.menu__item} key={i+20}>
+            <li className={headerNavStyles.menu__item} key={i}>
               <HeaderNavItem
                 linkData={link}
                 onMouseEnter={handleMouseEnter}

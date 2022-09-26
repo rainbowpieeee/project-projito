@@ -2,7 +2,7 @@ import { FC } from "react";
 import footerInfoStyles from "./footer-info.module.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
-import { API_URL_FOR_IMAGE } from "../../constants/index";
+import { API_URL_FOR_IMAGE, DESKTOP_MEDIA_QUERY } from "../../constants/index";
 import {IFooterProps} from "../../services/types/layout"
 
 type  FooterInfo = Omit<IFooterProps, "footerMenu">
@@ -12,7 +12,7 @@ export const FooterInfo: FC<FooterInfo> = ({
   footerLinks,
   footerSocial,
 }) => {
-  const desktop = useMediaQuery("(min-width: 768px)");
+  const desktop = useMediaQuery(DESKTOP_MEDIA_QUERY);
 
   return (   logos && footerLinks && footerSocial &&
     <section className={footerInfoStyles.info}>

@@ -5,14 +5,14 @@ import popupStyles from "./popup.module.css";
 
 interface IPopupProps{
   data: IPopup,
-  closePopup: ()=> void
+  closePopup: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const Popup: FC<IPopupProps> = ({data, closePopup}) => {
   const navigate = useNavigate();
 
   return (
     <div className={popupStyles.popup}>
-      <button type="button" onClick={()=> closePopup()} className={popupStyles.popup__closeButton} />
+      <button type="button" onClick={()=> closePopup(false)} className={popupStyles.popup__closeButton} />
     <Link to={`/page/${data.page_slug}`} className={popupStyles.popup__link}>
     <article
       onClick={() => navigate(`/page/${data.page_slug}`)}
