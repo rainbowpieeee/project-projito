@@ -5,13 +5,12 @@
   flex-direction: column;
 }
 
-.article h1 {
+h1 {
   font: 46px var(--font-family-wf);
   line-height: 55px;
   max-width: 678px;
   color: var(--black-100);
   padding: 28px 0 16px;
-  border-bottom: 1px solid var(--bg-orange-light);
   font-weight: 400;
   text-align: center;
   margin: 0 auto 0;
@@ -122,7 +121,7 @@
   .article blockquote {
     margin: 0 auto;
     padding: 0 0 0 12px;
-    width: 100%
+    width: 100%;
   }
   .article iframe {
     min-height: 320px;
@@ -246,7 +245,7 @@
 }
 
 .player__button-reverse-anticlockwise:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .player__button-reverse-clockwise {
@@ -260,7 +259,7 @@
 }
 
 .player__button-reverse-clockwise:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .player__soundtrack {
@@ -286,7 +285,7 @@
 }
 
 .player__button-mute:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .player__button-unmute {
@@ -363,7 +362,7 @@
   .player__button-unmute {
     background-image: url(../../../public/images/player/Mute_320px.svg);
     margin: 14px 10px 14px 0;
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { dataAPI } from "../../services/api/data";
 import pageStyles from "../css/page.module.css";
 import { Intro } from "../../components/intro/intro";
@@ -9,68 +9,69 @@ import Banner from "../../components/banner/banner";
 import CardsSlider from "../../components/cards-slider/cards-slider";
 import NewsItem from "../../components/news-item/news-item";
 import { JournalItem } from "../../components/journal-item/journal-item";
-import { isExperience } from "../../utils/functions";
 import Loader from "../../components/loader/loader";
-import { lookup } from "dns";
+import { useSelector } from "../../hooks";
+import { IJournalItem } from "../../services/types/journal";
+import { TBlock } from "../../services/types/front-page";
+import { API_URL_FOR_IMAGE } from "../../constants";
+import { TObj } from "../../services/types/news";
 
 const MainPage: FC = () => {
-  const data: any =
-    dataAPI.useGetFrontpageDataQuery();
+  const { data, isLoading }: any = dataAPI.useGetFrontpageDataQuery();
 
-  const popupData = data.data?.anchored[0]
-  const introData = data.data?.blocks.find((block:any)=> block.layout === "actions").cards
-  
- 
+  const popupData = data?.anchored[0];
+  const introData = data?.blocks.find(
+    (block: TBlock) => block.layout === "actions"
+  ).cards;
+  const materialsData = data?.blocks.find(
+    (block: TBlock) => block.layout === "cards"
+  );
+  const bannerData = data?.blocks.find(
+    (block: TBlock) => block.layout === "card"
+  ).cards;
+  const specialData = data?.blocks.find(
+    (block: TBlock) => block.layout === "special"
+  ).category;
+  const journalData = data?.blocks.find(
+    (block: TBlock) => block.layout === "journal"
+  );
 
-  const { isLoading: isNewsLoading, data: newsData } =
-    dataAPI.useGetMainNewsQuery();
-  const { isLoading: isDiaryLoading, data: diaryData } =
-    dataAPI.useGetDiariesQuery();
-  const { isLoading: isBannerLoading, data: bannerData } =
-    dataAPI.useGetBannerQuery();
-  const { isLoading: isJournalLoading, data: journalData } =
-    dataAPI.useGetMainJournalQuery();
+  const newsDatas = useSelector((store) => store.news.data);
 
   const [popupOpen, setPopupOpen] = useState(true);
-  const newsForSlider = newsData
-    ? newsData.map((news) => {
+
+  const newsForSlider = newsDatas
+    ? newsDatas.map((obj: TObj, i: number) => {
         return (
           <NewsItem
-            date={news.date}
-            tag={news.tag}
-            text={news.text}
-            image={news.image}
-            imageMobile={news.imageMobile}
-            key={news.id}
+            date_published={obj.date_published}
+            slug={obj.slug}
+            tags={obj.tags}
+            annotation={obj.annotation}
+            cover={`${API_URL_FOR_IMAGE}/${obj.cover}`}
+            layout={obj.layout}
+            subtitle={obj.subtitle}
+            title={obj.title}
+            key={i}
           />
         );
       })
     : [];
 
-  if (
-    isNewsLoading ||
-    isBannerLoading ||
-    isDiaryLoading ||
-    isJournalLoading 
-  ) {
-    return <Loader />;
-  }
-
   const journalForSlider = journalData
-    ? journalData.map((item) => {
-        return (
-          <JournalItem isExp={isExperience(item)} item={item} key={item.id} />
-        );
+    ? journalData.category.items.map((item: IJournalItem) => {
+        return <JournalItem item={item} key={item.id} />;
       })
     : [];
 
+  if (isLoading) return <Loader />;
   return (
     <main>
-      { popupData && popupOpen && (
-        <Popup data={popupData} closePopup={() => setPopupOpen(false)} />
+      {popupData && popupOpen && (
+        <Popup data={popupData} closePopup={setPopupOpen} />
       )}
       <Intro introData={introData} />
-      {!isNewsLoading && newsForSlider && (
+      {newsForSlider && (
         <section>
           <CardsSlider
             title="Новости и события"
@@ -81,27 +82,28 @@ const MainPage: FC = () => {
           />
         </section>
       )}
-      {!isDiaryLoading && diaryData && <Materials data={diaryData} />}
-      {!isBannerLoading && bannerData && (
+      {materialsData && <Materials {...materialsData} />}
+
+      {bannerData && (
         <section className={pageStyles.page__section}>
-          <Banner data={bannerData} />
+          <Banner {...bannerData[0]} />
         </section>
       )}
 
-      {!isJournalLoading && journalData && (
+      {journalData && (
         <section className={pageStyles.page__overflow}>
           <CardsSlider
-            title="Журнал «Прожито»"
-            textLink="Посмотреть всю подборку"
+            title={journalData.category.title}
+            textLink={journalData.category.archive_link_label}
             cards={journalForSlider}
-            sliderTitle="Новые материалы"
-            to={"/journal"}
+            sliderTitle={journalData.category.subtitle}
+            to={`/${journalData.category.slug}`}
             slider={true}
           />
         </section>
       )}
 
-      <Project />
+      <Project {...specialData} />
     </main>
   );
 };

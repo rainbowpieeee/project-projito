@@ -14,7 +14,7 @@
 .table__container {
   position: relative;
   padding-top: 170px;
-  width: 64.30%;
+  width: 64.3%;
 }
 
 .table__title {
@@ -28,7 +28,7 @@
   line-height: 100%;
   color: var(--black-100);
   width: 100%;
-  border-bottom:  1px solid rgba(50, 50, 50, 0.5);
+  border-bottom: 1px solid rgba(50, 50, 50, 0.5);
 }
 
 .table__close {

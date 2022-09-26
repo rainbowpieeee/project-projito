@@ -1,67 +1,46 @@
-import { Link} from "react-router-dom";
-import {useState} from 'react'
+import { Link } from "react-router-dom";
+import { EventHandler, FC, MouseEventHandler, useState } from "react";
 import headerNavItemStyles from "./header-nav-item.module.css";
-import { set } from "immer/dist/internal";
+import { ILink } from "../../services/types/layout";
 
-export const HeaderNavItem = ({linkData, onMouseEnter, onMouseLeave}:any) => {
+type THeaderNavItem = {
+
+  linkData:ILink;
+  onMouseEnter: (children:[{title: string;
+    page_slug: string;
+    url: string;
+    children?: [string];}] | undefined)=>void;
+  onMouseLeave: ()=>void;
+}
+
+
+export const HeaderNavItem: FC<THeaderNavItem> = ({
+  linkData,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
   const slug = linkData.page_slug;
   const url = linkData.url;
-  const [itemData, ] = useState(linkData)
-
-
- 
+  const [itemData] = useState(linkData);
 
   return slug ? (
-    <Link to={slug} className={headerNavItemStyles.menu__link}
-    onMouseEnter = {() => onMouseEnter(itemData.children)}
-    onMouseLeave = {() => onMouseLeave()}
+    <Link
+      to={slug}
+      className={headerNavItemStyles.menu__link}
+      onMouseEnter={() => onMouseEnter(itemData.children)}
+      onMouseLeave={() => onMouseLeave()}
     >
       {linkData.title}
     </Link>
   ) : (
     <a
-    onMouseEnter = {() => onMouseEnter(itemData.children)}
-    onMouseLeave = {() => onMouseLeave()}
-    href={url}
-    className={headerNavItemStyles.menu__link}
-    target="_blank"
-  >
-    {linkData.title}
-  </a>
+      onMouseEnter={() => onMouseEnter(itemData.children)}
+      onMouseLeave={() => onMouseLeave()}
+      href={url}
+      className={headerNavItemStyles.menu__link}
+      target="_blank"
+    >
+      {linkData.title}
+    </a>
   );
 };
-
-// link.page_slug ? (
-//   <Link
-//     to={link.page_slug}
-//     className={headerNavStyles.menu__link}
-//   >
-//     {" "}
-//     {link.title}
-//   </Link>
-// ) : (
-//   <a
-//     href={link.url}
-//     className={headerNavStyles.menu__link}
-//     target="_blank"
-//   >
-//     {link.title}
-//   </a>
-// );
-// })}
-// <HeaderDropdown
-// visible={dropDownVisible}
-// desktop={desktop}
-// setDropDownVisible={setDropDownVisible}
-// closeMenu={closeMenu}
-// />
-
-// <li
-// className={headerNavStyles.menu__item}
-// onMouseEnter={() => setDropDownVisible(true)}
-// onMouseLeave={() => setDropDownVisible(false)}
-// >
-// <Link to="/" className={headerNavStyles.menu__link} onClick={closeMenu}>
-//   О&nbsp;проекте
-// </Link>
-// </li>

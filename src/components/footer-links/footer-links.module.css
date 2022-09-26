@@ -33,7 +33,8 @@
   font: 16px/1.18 var(--font-family-pt-sans);
 }
 
-@media screen and (max-width: 1023px) { /* планшетная версия до ширины экрана в 1023px*/
+@media screen and (max-width: 1023px) {
+  /* планшетная версия до ширины экрана в 1023px*/
   .links {
     width: 612px;
     gap: 60px;

@@ -1,25 +1,26 @@
-import { FC } from 'react';
-import FooterInfo from '../footer-info/footer-info';
-import { FooterLinks } from '../footer-links/footer-links';
-import footerStyles from './footer.module.css';
+import { FC } from "react";
+import FooterInfo from "../footer-info/footer-info";
+import { FooterLinks } from "../footer-links/footer-links";
+import footerStyles from "./footer.module.css";
+import { IFooterProps } from "../../services/types/layout";
 
-
-interface IFooterProps {
-  logos:any;
-  footerMenu:any;
-  footerLinks: any;
-  footerSocial: any;
-}
-
-export const Footer: FC<IFooterProps> = ({footerMenu, logos, footerLinks, footerSocial  }) => {
-
+export const Footer: FC<IFooterProps> = ({
+  footerMenu,
+  logos,
+  footerLinks,
+  footerSocial,
+}) => {
   return (
-      <footer className={footerStyles.footer}>
-        <FooterLinks footerMenu = {footerMenu} />
+    <footer className={footerStyles.footer}>
+      <FooterLinks footerMenu={footerMenu} />
 
-        <FooterInfo logos={logos} footerLinks={footerLinks} footerSocial={footerSocial} />
-      </footer>
-  )
-}
+      <FooterInfo
+        logos={logos}
+        footerLinks={footerLinks}
+        footerSocial={footerSocial}
+      />
+    </footer>
+  );
+};
 
 export default Footer;

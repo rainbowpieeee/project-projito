@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { IDiaryItem } from "../../services/types/diary";
 import materialsStyle from "./materials.module.css";
 import { MaterialsItem } from "../materials-item/materials-item";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IMaterialsProps } from "../../services/types/materials";
+import { DESKTOP_MEDIA_QUERY} from "../../constants/index"
 
 // Import Swiper styles
 import "swiper/css";
@@ -12,30 +13,25 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-interface IMaterialsProps {
-  data: IDiaryItem[];
-}
+export const Materials: FC<IMaterialsProps> = ({ title, cards }) => {
 
-export const Materials: FC<IMaterialsProps> = ({ data }) => {
-  const desktop = useMediaQuery("(min-width: 768px)")
+  const desktop = useMediaQuery(DESKTOP_MEDIA_QUERY)
+
   return (
     <section className={materialsStyle.materials}>
-      <h2 className={materialsStyle.title}>Материалы</h2>
+      <h2 className={materialsStyle.title}>{title}</h2>
       {desktop ? (
         <ul className={materialsStyle.cards}>
-          {
-            data.map(item => (
-              <MaterialsItem
-                id={item.id}
-                name={item.name}
-                image={item.image}
-                text={item.text}
-                tag={item.tag}
-                key={item.id}
-                sample={item.sample}
-              />
-            ))
-          }
+          {cards.map((item, index: number) => (
+            <MaterialsItem
+              name={item.title}
+              image={item.cover}
+              text={item.annotation}
+              tag={item.label}
+              key={index}
+              sample={item.links[0].page_slug}
+            />
+          ))}
         </ul>
       ) : (
         <>
@@ -45,29 +41,27 @@ export const Materials: FC<IMaterialsProps> = ({ data }) => {
             spaceBetween={12}
             slidesPerView={"auto"}
             pagination={{ el: ".pagination", clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
             className={materialsStyle.swiper}
           >
-            {
-              data.map(item => (
-                <SwiperSlide className={materialsStyle.swiperSlide} key={item.id}>
-                  <MaterialsItem
-                    id={item.id}
-                    name={item.name}
-                    image={item.image}
-                    text={item.text}
-                    tag={item.tag}
-                    key={item.id}
-                    sample={item.sample}
-                  />
-                </SwiperSlide>
-              ))
-            }
+            {cards.map((item, index: number) => (
+              <SwiperSlide
+                className={materialsStyle.swiperSlide}
+                key={index + 100}
+              >
+                <MaterialsItem
+                  name={item.title}
+                  image={item.cover}
+                  text={item.annotation}
+                  tag={item.label}
+                  key={index}
+                  sample={item.links[0].page_slug}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
           <div className={`${materialsStyle.pagination} pagination`} />
         </>
       )}
     </section>
-  )
-}
+  );
+};

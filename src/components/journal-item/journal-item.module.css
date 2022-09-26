@@ -24,6 +24,8 @@ p {
 
 .img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .name {
@@ -116,6 +118,7 @@ p {
   font-size: 14px;
   line-height: 18px;
   margin-block-end: auto;
+  color: var(--black-100);
 }
 
 .typeExp {
@@ -123,6 +126,15 @@ p {
   font-size: 14px;
   line-height: 18px;
   text-transform: uppercase;
+  color: var(--black-100);
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:visited {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1220px) {

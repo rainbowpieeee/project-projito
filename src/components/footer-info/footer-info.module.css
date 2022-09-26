@@ -14,8 +14,8 @@
     grid-template-columns: 294px 1fr;
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
-    "logo social"
-    "logo legal";
+      "logo social"
+      "logo legal";
   }
 }
 
@@ -29,9 +29,9 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
-    "social"
-    "logo"
-    "legal";
+      "social"
+      "logo"
+      "legal";
   }
 }
 
@@ -79,7 +79,6 @@
     width: 80px;
   }
 }
-
 
 .links {
   list-style: none;
@@ -136,8 +135,8 @@
 }
 
 .link:hover {
-  opacity: .3;
-  transition: opacity .3s linear 0s;
+  opacity: 0.3;
+  transition: opacity 0.3s linear 0s;
 }
 
 .icon {
@@ -169,7 +168,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .legal{
+  .legal {
     display: flex;
     flex-direction: column;
     grid-gap: 32px;
@@ -180,7 +179,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .legal{
+  .legal {
     order: 3;
     margin: 20px 0 16px;
   }
@@ -228,9 +227,8 @@
   }
 }
 
-
 .mainLogo {
-  max-width:176px
+  max-width: 176px;
 }
 
 .euLogo {

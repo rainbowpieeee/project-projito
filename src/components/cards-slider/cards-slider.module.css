@@ -63,6 +63,7 @@ ul {
 .swiper__slide {
   margin-block-end: 75px;
   padding-top: 95px;
+  height: 100%;
 }
 
 .swiper__navContainer {

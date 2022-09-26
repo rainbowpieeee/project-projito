@@ -61,9 +61,9 @@
   border: none;
   background-color: transparent;
 }
-.menu__button:hover{
-  opacity: .3;
-  transition: opacity .3s linear 0s;
+.menu__button:hover {
+  opacity: 0.3;
+  transition: opacity 0.3s linear 0s;
 }
 
 @media screen and (min-width: 768px) {
@@ -79,8 +79,8 @@
 }
 
 .link:hover {
-  opacity: .3;
-  transition: opacity .3s linear 0s;
+  opacity: 0.3;
+  transition: opacity 0.3s linear 0s;
 }
 
 .euLogo {

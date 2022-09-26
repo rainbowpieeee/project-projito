@@ -9,7 +9,7 @@ import arrowImgDisabled from "../../images/arrow_right_disabled.svg";
 import arrowImgDisabledWhite from "../../images/arrow_right_disabled_white.svg";
 
 export const LinkButton: FC<{
-  to?: To;
+  to?: To | string;
   type?: "link" | "button";
   round?: boolean;
   color?: boolean;
@@ -88,7 +88,7 @@ export const LinkButton: FC<{
   );
 
   const buttonElement = (
-    <button className={className} disabled={disabled} onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {children}
       {arrowImage}
     </button>
